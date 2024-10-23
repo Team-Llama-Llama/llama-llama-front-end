@@ -1,9 +1,9 @@
-interface Users {
+interface User {
   id: number;
   username: string;
 }
 
-interface Categories {
+interface Category {
   id: number;
   userId: number;
   name: string;
@@ -11,7 +11,7 @@ interface Categories {
   updatedAt: string;
 }
 
-interface Modules {
+interface Module {
   id: number;
   categoryId: number;
   tile: string;
@@ -22,4 +22,4 @@ interface Modules {
   updatedAt: string;
 }
 
-export { Users, Categories, Modules };
+export { User, Category, Module };
