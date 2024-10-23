@@ -1,10 +1,9 @@
-export interface Users {
+interface Users {
   id: number;
   username: string;
-  hashedPassword: string;
 }
 
-export interface Categories {
+interface Categories {
   id: number;
   userId: number;
   name: string;
@@ -12,7 +11,7 @@ export interface Categories {
   updatedAt: string;
 }
 
-export interface Modules {
+interface Modules {
   id: number;
   categoryId: number;
   tile: string;
@@ -22,3 +21,5 @@ export interface Modules {
   createdAt: string;
   updatedAt: string;
 }
+
+export { Users, Categories, Modules };
