@@ -1,4 +1,5 @@
 interface User {
+  main
   id: number;
   username: string;
 }
