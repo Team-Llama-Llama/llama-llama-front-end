@@ -1,7 +1,6 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
 // fetch for categories
-
 export const addCategory = async (name: string) => {
   const response = await fetch(`${API_URL}/categories`, {
     method: "POST",
