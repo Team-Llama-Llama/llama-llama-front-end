@@ -2,7 +2,9 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 // fetch for categories
 export const addCategory = async (name: string) => {
-  const response = await fetch(`${API_URL}/categories`, {
+
+  //Need to add auth user
+  const response = await fetch(`${API_URL}/users/1/categories`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name }),
@@ -37,6 +39,7 @@ export const getModules = async (categoryId: number) => {
 };
 
 export const addModule = async (categoryId: number, newModule: object) => {
+  console.log(newModule)
   const response = await fetch(`${API_URL}/categories/${categoryId}/modules`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
