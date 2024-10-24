@@ -23,7 +23,6 @@ function App() {
 
   async function getModulesHandler (categoryId: number) {
       const modules = await getModules(categoryId);
-      console.log(modules)
       setModules(modules);
   }
   
@@ -35,7 +34,9 @@ function App() {
         <h1>Llama Llama</h1>
       </div>
       {/* <div className="CreateModule">
-        <CreateModule />
+        <CreateModule 
+          createModule={CreateModule}
+        />
       </div> */}
     
       <div className="CategoryMenu">
