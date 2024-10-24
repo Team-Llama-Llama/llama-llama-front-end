@@ -1,8 +1,18 @@
-const ReferenceURL: React.FC = ( { referenceURL }) => {
+// import { ModuleInterface } from "./dataInterface"
+
+interface Props {
+    referenceURL: string;
+}
+
+// type referenceURL = Pick<ModuleInterface, 'referenceUrl'>;
+
+const ReferenceURL = ( { referenceURL } : Props ) => {
 
     return (
 
-        //embedded area 
+        <div>
+            <p>{referenceURL}</p>
+        </div>
 
     )
 

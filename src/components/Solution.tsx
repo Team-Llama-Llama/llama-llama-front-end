@@ -1,8 +1,13 @@
-const Solution: React.FC = ( { solution }) => {
+
+interface Props {
+    solution: string;
+}
+
+const Solution = ( { solution } : Props) => {
 
     return (
         
-        //input area with module.solution
+        <div>{solution}</div>
 
     )
 

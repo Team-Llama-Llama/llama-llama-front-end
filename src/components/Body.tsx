@@ -1,11 +1,17 @@
-const Note: React.FC = ({ body }) => {
+// import { ModuleInterface } from "./dataInterface"
+
+interface Props {
+    body: string;
+}
+
+const Body = ( { body } : Props) => {
 
     return (
         
-        //input area with module.solution
+        <div>{body}</div>
 
     )
 
 }
 
-export default Note;
+export default Body;

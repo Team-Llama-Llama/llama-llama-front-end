@@ -1,6 +1,11 @@
 import Module from "./Module";
+import { ModuleInterface } from "./dataInterface";
 
-const ModuleList: React.FC = ({ modules }) => {
+interface Props {
+    modules: ModuleInterface[]
+}
+
+const ModuleList = ({ modules } : Props ) => {
 
     return (
      
