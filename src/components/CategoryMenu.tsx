@@ -1,7 +1,7 @@
-import { Category } from "./dataInterface"
+import { CategoryInterface } from "./dataInterface"
 
 interface Props {
-    categories: Category[],
+    categories: CategoryInterface[],
     getModulesHandler: (categoryId: number) => Promise<void>,
 }
 
@@ -15,7 +15,7 @@ const CategoryMenu = ({categories, getModulesHandler}: Props) => {
                             className="category" 
                             key={index}
                         >
-                            <button onClick={()=>getModulesHandler(category.id)}>category.name</button>
+                            <button onClick={()=>getModulesHandler(category.id)}>{category.name}</button>
                         </div>
                 })
             }

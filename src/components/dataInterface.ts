@@ -1,10 +1,9 @@
-interface User {
-  main
+interface UserInterface {
   id: number;
   username: string;
 }
 
-interface Category {
+interface CategoryInterface {
   id: number;
   userId: number;
   name: string;
@@ -12,15 +11,15 @@ interface Category {
   updatedAt: string;
 }
 
-interface Module {
+interface ModuleInterface {
   id: number;
   categoryId: number;
-  tile: string;
+  title: string;
   body: string;
-  referenceUrl: string;
+  reference_url: string;
   solution: string;
   createdAt: string;
   updatedAt: string;
 }
 
-export { User, Category, Module };
+export type { UserInterface, CategoryInterface, ModuleInterface };
