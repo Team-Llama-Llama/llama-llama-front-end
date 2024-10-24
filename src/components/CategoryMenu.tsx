@@ -1,4 +1,11 @@
-const CategoryMenu: React.FC = ({categories, getModulesHandler}) => {
+import { Category } from "./dataInterface"
+
+interface Props {
+    categories: Category[],
+    getModulesHandler: (categoryId: number) => Promise<void>,
+}
+
+const CategoryMenu = ({categories, getModulesHandler}: Props) => {
 
     return (
     

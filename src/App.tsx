@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import CategoryMenu from "./components/CategoryMenu";
 import CreateModule from "./components/CreateModule";
 import ModuleList from "./components/Module";
-import { getCategories, getModules } from "./utilities/Api";
+import { login } from "./utilities/auth";
+import { getModules } from "./utilities/Api";
 import { Category, Module } from "./components/dataInterface";
 
 function App() {
@@ -12,11 +13,11 @@ function App() {
   const [modules, setModules] = useState<Module[]>([]);
 
   useEffect(()=> {   
-    login() 
+    userLogin() 
   },[]);
 
-  async function login() {
-      const categories = await getCategories();
+  async function userLogin() {
+      const categories = await login();
       setCategories(categories);
   }
 
