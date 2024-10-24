@@ -1,4 +1,4 @@
-const Solution: React.FC = ( { solution }) => {
+const Note: React.FC = ({ body }) => {
 
     return (
         
@@ -8,4 +8,4 @@ const Solution: React.FC = ( { solution }) => {
 
 }
 
-export default Solution;
+export default Note;
