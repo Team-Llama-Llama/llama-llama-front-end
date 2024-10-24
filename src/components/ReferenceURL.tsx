@@ -1,7 +1,9 @@
-const ReferenceURL: React.FC = () => {
+const ReferenceURL: React.FC = ( { referenceURL }) => {
 
     return (
-        
+
+        //embedded area with module.solution
+
     )
 
 }
