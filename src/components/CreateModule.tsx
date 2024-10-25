@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { addModule } from "../utilities/Api";
+// import { ModuleInterface } from "./dataInterface";
 
 //need to fix any
-const CreateModule = ({ categoryId } : any) => {
+const CreateModule = ({ categoryId } : {categoryId : number}) => {
 
     const [titleValue, setTitleValue] = useState("");
     const [referenceUrlValue, setReferenceUrlValue] = useState("");
@@ -10,8 +11,8 @@ const CreateModule = ({ categoryId } : any) => {
     //need to fix any
     async function handleAddModule(e : any) {
         e.preventDefault();
-        await addModule(categoryId, {title: titleValue, reference_url: referenceUrlValue});
-        // window.location.reload();
+        await addModule(categoryId, {title: titleValue, referenceUrl: referenceUrlValue});
+        window.location.reload();
     }
 
     return (
