@@ -5,10 +5,12 @@ const [isAuth, setIsAuth] = useState<boolean>(false);
 
 return (
 
-    <input onChange={(event) => event.target.value} >Username: </input>
-    <input onChange={(event) => event.target.value} >Password: </input>
+    <div>
+        <input onChange={(event) => event.target.value} >Username: </input>
+        <input onChange={(event) => event.target.value} >Password: </input>
 
-    isAuth ?
-    </App> : </NotAuth>
+        {isAuth ?
+        </App> : </NotAuth>}
+    </div>
 
 )

@@ -16,7 +16,7 @@ interface ModuleInterface {
   categoryId: number;
   title: string;
   body: string;
-  reference_url: string;
+  referenceUrl: string;
   solution: string;
   createdAt: string;
   updatedAt: string;

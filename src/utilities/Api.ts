@@ -1,10 +1,11 @@
 const API_URL = import.meta.env.VITE_API_URL;
+// import { ModuleInterface } from "../components/dataInterface";
 
 // fetch for categories
 export const addCategory = async (name: string) => {
 
   //Need to add auth user
-  const response = await fetch(`${API_URL}/users/1/categories`, {
+  const response = await fetch(`${API_URL}/users/2/categories`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name }),
@@ -38,7 +39,8 @@ export const getModules = async (categoryId: number) => {
   return response.json();
 };
 
-export const addModule = async (categoryId: number, newModule: object) => {
+export const addModule = async (categoryId: number, newModule: ModuleInterface) => {
+  console.log(categoryId)
   console.log(newModule)
   const response = await fetch(`${API_URL}/categories/${categoryId}/modules`, {
     method: "POST",
@@ -48,7 +50,7 @@ export const addModule = async (categoryId: number, newModule: object) => {
   return response.json();
 };
 
-export const editModule = async (moduleId: number, moduleEdited: object) => {
+export const editModule = async (moduleId: number, moduleEdited: ModuleInterface) => {
   const response = await fetch(`${API_URL}/modules/${moduleId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
