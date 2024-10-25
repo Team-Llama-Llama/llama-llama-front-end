@@ -12,7 +12,7 @@ interface CategoryInterface {
 }
 
 interface ModuleInterface {
-  id: number;
+  id?: number;
   categoryId: number;
   title: string;
   body: string;

@@ -1,5 +1,8 @@
 const API_URL = import.meta.env.VITE_API_URL;
-import { CategoryInterface } from "../components/dataInterface";
+import {
+  CategoryInterface,
+  ModuleInterface,
+} from "../interfaces/dataInterface";
 
 // fetch for categories
 export const getCategories = async (
@@ -51,16 +54,24 @@ export const getModules = async (categoryId: number) => {
 
 export const addModule = async (
   categoryId: number,
-  newModule: ModuleInterface
-) => {
-  console.log(categoryId);
-  console.log(newModule);
+  title: string,
+  referenceUrl: string
+): Promise<number> => {
+  const newModuleObject: ModuleInterface = {
+    categoryId: categoryId,
+    title: title,
+    referenceUrl: referenceUrl,
+    body: "",
+    solution: "",
+    createdAt: "",
+    updatedAt: "",
+  };
   const response = await fetch(`${API_URL}/categories/${categoryId}/modules`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(newModule),
+    body: JSON.stringify(newModuleObject),
   });
-  return response.json();
+  return response.status;
 };
 
 export const editModule = async (

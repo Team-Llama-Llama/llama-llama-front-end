@@ -1,7 +1,12 @@
 import "quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
+import { EditedProperties } from "./Module";
 
-const PrettyDecent = () => {
+interface Props {
+  handlePropertyChange: (property: EditedProperties, value: string) => void;
+}
+
+const PrettyDecent: React.FC<Props> = ({ handlePropertyChange }) => {
   const modules = {
     toolbar: [
       [{ size: ["small", false, "large", "huge"] }],
@@ -78,8 +83,8 @@ const PrettyDecent = () => {
     "size",
   ];
 
-  const handleProcedureContentChange = (content: unknown) => {
-    console.log("content---->", content);
+  const handleProcedureContentChange = (content: string) => {
+    handlePropertyChange("solution", content);
   };
 
   return (

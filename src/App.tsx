@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
-import CategoryMenu from "./components/CategoryMenu/CategoryMenu";
-import ModuleList from "./components/ModuleList";
-import { getModules } from "./utilities/Api";
-import { CategoryInterface, ModuleInterface } from "./components/dataInterface";
+import { useState } from "react";
+import CategoryList from "./components/CategoryList/CategoryList";
+import ModuleList from "./components/ModuleList/ModuleList";
 
 interface Props {
   userId: number;
@@ -10,7 +8,7 @@ interface Props {
 
 function App({ userId }: Props) {
   // Add typescript correct typo
-  const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
+  const [activeCategoryId, setActiveCategoryId] = useState<number | null>(null);
 
   return (
     <div className="App">
@@ -20,14 +18,14 @@ function App({ userId }: Props) {
 
       {/* Side bar in the left */}
       <div className="CategoryMenu">
-        <CategoryMenu
+        <CategoryList
           userId={userId}
           setActiveCategoryId={setActiveCategoryId}
         />
       </div>
 
       <div className="ModuleList">
-        <ModuleList userId={userId} activeCategoryId={activeCategoryId} />
+        <ModuleList activeCategoryId={activeCategoryId} />
       </div>
     </div>
   );

@@ -1,15 +1,18 @@
 import { CategoryInterface } from "../../interfaces/dataInterface";
-import AddCategoryForm from "../AddCategoryForm";
 import { useState, useEffect } from "react";
-import { getCategories } from "../../utilities/Api";
-import { deleteCategory } from "../../utilities/Api";
+import {
+  deleteCategory,
+  addCategory,
+  getCategories,
+} from "../../utilities/Api";
+import AddCategory from "./components/AddCategory";
 
 interface Props {
   userId: number;
-  setActiveCategoryId: (category: number) => Promise<void>;
+  setActiveCategoryId: (category: number) => void;
 }
 
-const CategoryMenu = ({ userId, setActiveCategoryId }: Props) => {
+const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
   // Pick correct type! [ ]
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
 
@@ -30,6 +33,15 @@ const CategoryMenu = ({ userId, setActiveCategoryId }: Props) => {
   const handleFetchCategories = async () => {
     const allCategories = await getCategories(userId);
     setCategories(allCategories);
+  };
+
+  const handleAddCategory = (categoryName: string) => {
+    return async () => {
+      const statusCode = await addCategory(categoryName);
+      if (statusCode === 201) {
+        alert("edited");
+      }
+    };
   };
 
   const handleDeleteCategory = async (categoryId: number, index: number) => {
@@ -61,9 +73,9 @@ const CategoryMenu = ({ userId, setActiveCategoryId }: Props) => {
           </div>
         );
       })}
-      <AddCategoryForm />
+      <AddCategory handleAddCategory={handleAddCategory} />
     </div>
   );
 };
 
-export default CategoryMenu;
+export default CategoryList;
