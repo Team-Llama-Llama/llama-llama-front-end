@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import CategoryMenu from "./components/CategoryMenu";
-// import CreateModule from "./components/CreateModule";
 import ModuleList from "./components/ModuleList";
 import { login } from "./utilities/auth";
 import { getModules } from "./utilities/Api";
@@ -33,11 +32,6 @@ function App() {
       <div className="Header">
         <h1>Llama Llama</h1>
       </div>
-      {/* <div className="CreateModule">
-        <CreateModule 
-          createModule={CreateModule}
-        />
-      </div> */}
     
       <div className="CategoryMenu">
         <CategoryMenu 

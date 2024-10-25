@@ -1,21 +1,31 @@
-// import { getModules } from "./utilities/Api";
+import { addCategory } from "../utilities/Api";
+import { useState } from "react";
 
 
-// const CategoryForm = () => {
+const AddCategoryForm = () => {
+    const [category, setCategory] = useState<string>("")
 
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         if (!title) {
-//           alert("Title cannot be empty.");
-//           return;
-//         }
-//         await createNote({ title, note });
-//         setTitle("");
-//         setNote("");
-//         window.location.reload();
-// }
+    //need to edit any for e
+    const handleSubmit = async (e : any) => {
+        e.preventDefault();
+        await addCategory(category);
+        window.location.reload();
+    }
 
-// export default CategoryForm;
+    return (
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Title"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+            />
+        <button type="submit">Add</button>
+    </form> 
+    )
+}
+export default AddCategoryForm;
 
 
 
