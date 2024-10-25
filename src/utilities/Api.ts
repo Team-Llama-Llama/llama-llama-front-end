@@ -1,9 +1,19 @@
 const API_URL = import.meta.env.VITE_API_URL;
-// import { ModuleInterface } from "../components/dataInterface";
+import { CategoryInterface } from "../components/dataInterface";
 
 // fetch for categories
-export const addCategory = async (name: string) => {
+export const getCategories = async (
+  userId: number
+): Promise<CategoryInterface[]> => {
+  //Need to add auth user
+  const response = await fetch(`${API_URL}/users/${userId}/categories`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json();
+};
 
+export const addCategory = async (name: string) => {
   //Need to add auth user
   const response = await fetch(`${API_URL}/users/2/categories`, {
     method: "POST",
@@ -39,9 +49,12 @@ export const getModules = async (categoryId: number) => {
   return response.json();
 };
 
-export const addModule = async (categoryId: number, newModule: ModuleInterface) => {
-  console.log(categoryId)
-  console.log(newModule)
+export const addModule = async (
+  categoryId: number,
+  newModule: ModuleInterface
+) => {
+  console.log(categoryId);
+  console.log(newModule);
   const response = await fetch(`${API_URL}/categories/${categoryId}/modules`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -50,7 +63,10 @@ export const addModule = async (categoryId: number, newModule: ModuleInterface) 
   return response.json();
 };
 
-export const editModule = async (moduleId: number, moduleEdited: ModuleInterface) => {
+export const editModule = async (
+  moduleId: number,
+  moduleEdited: ModuleInterface
+) => {
   const response = await fetch(`${API_URL}/modules/${moduleId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },

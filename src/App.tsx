@@ -1,54 +1,36 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import CategoryMenu from "./components/CategoryMenu";
+import CategoryMenu from "./components/CategoryMenu/CategoryMenu";
 import ModuleList from "./components/ModuleList";
-import { login } from "./utilities/auth";
 import { getModules } from "./utilities/Api";
 import { CategoryInterface, ModuleInterface } from "./components/dataInterface";
 
-function App() {
+interface Props {
+  userId: number;
+}
 
-  const [categories, setCategories] = useState<CategoryInterface[]>([]);
-  const [modules, setModules] = useState<ModuleInterface[]>([]);
+function App({ userId }: Props) {
+  // Add typescript correct typo
+  const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
 
-  useEffect(()=> {   
-    userLogin() 
-  },[]);
-
-  async function userLogin() {
-      const categories = await login();
-      setCategories(categories.data);
-  }
-
-  async function getModulesHandler (categoryId: number) {
-      const modules = await getModules(categoryId);
-      setModules(modules);
-  }
-  
   return (
-
     <div className="App">
-
       <div className="Header">
         <h1>Llama Llama</h1>
       </div>
-    
+
+      {/* Side bar in the left */}
       <div className="CategoryMenu">
-        <CategoryMenu 
-          categories={categories}
-          getModulesHandler={getModulesHandler}
+        <CategoryMenu
+          userId={userId}
+          setActiveCategoryId={setActiveCategoryId}
         />
       </div>
 
       <div className="ModuleList">
-        <ModuleList 
-          modules={modules}
-        />
+        <ModuleList userId={userId} activeCategoryId={activeCategoryId} />
       </div>
-    
     </div>
-
-  )
+  );
 }
 
 export default App;
