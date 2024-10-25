@@ -30,7 +30,7 @@ const CreateModule = ({ activeCategoryId, handleAddModule }: Props) => {
           onChange={(e) => setReferenceUrlValue(e.target.value)}
         />
         <button
-          type="submit"
+          type="button"
           onClick={handleAddModule(
             activeCategoryId,
             titleValue,

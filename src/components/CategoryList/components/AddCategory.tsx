@@ -22,7 +22,7 @@ const AddCategory = ({ handleAddCategory }: Props) => {
         value={categoryName}
         onChange={(e) => setCategoryName(e.target.value)}
       />
-      <button type="submit" onClick={handleAddCategory(categoryName)}>
+      <button type="button" onClick={handleAddCategory(categoryName)}>
         Add Category
       </button>
     </form>

@@ -16,7 +16,9 @@ export const getCategories = async (
   return response.json();
 };
 
-export const addCategory = async (name: string) => {
+export const addCategory = async (
+  name: string
+): Promise<{ message: string; data: CategoryInterface }> => {
   //Need to add auth user
   const response = await fetch(`${API_URL}/users/2/categories`, {
     method: "POST",

@@ -22,6 +22,11 @@ const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
     handleFetchCategories();
   }, []);
 
+  // Debug
+  useEffect(() => {
+    console.log(categories);
+  }, [categories]);
+
   // Handlers
   function handleCategoryClicked(id: number) {
     return () => {
@@ -32,14 +37,16 @@ const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
   // HTTP handling
   const handleFetchCategories = async () => {
     const allCategories = await getCategories(userId);
+    console.log("Inside fetch categories", userId, allCategories);
     setCategories(allCategories);
   };
 
   const handleAddCategory = (categoryName: string) => {
     return async () => {
-      const statusCode = await addCategory(categoryName);
-      if (statusCode === 201) {
-        alert("edited");
+      const objectCreated = await addCategory(categoryName);
+      // Its correctly validate it?
+      if (objectCreated) {
+        setCategories([...categories, objectCreated.data]);
       }
     };
   };
