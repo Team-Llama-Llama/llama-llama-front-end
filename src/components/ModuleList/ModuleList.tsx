@@ -16,7 +16,8 @@ const ModuleList = ({ activeCategoryId }: Props) => {
     // Imagine that this will work at the first render
     handleFetchModules();
     //PRESTON clicking category shows modules if insert active categoryID below
-  }, [activeCategoryId]);
+    //PRESTON Clicking add modules shows immediately when adding modules state here
+  }, [activeCategoryId, modules]);
 
   // Handlers ->
   const handleAddModule = (
@@ -91,8 +92,8 @@ const ModuleList = ({ activeCategoryId }: Props) => {
           </div>
 
       {activeCategoryId ? (
-          <div className="border-2 top-1/4 w-1/2 absolute m-4">
 
+          <div className="border-2 top-1/4 w-1/2 absolute m-4">    
             {modules.map((item, index) => {
               return (
                 <div  key={index}>

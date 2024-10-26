@@ -89,7 +89,7 @@ const PrettyDecent: React.FC<Props> = ({ handlePropertyChange }) => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Text Editor In React JS</h1>
+      <h1 style={{ textAlign: "center" }}></h1>
       <div style={{ display: "grid", justifyContent: "center" }}>
         <ReactQuill
           theme="snow"

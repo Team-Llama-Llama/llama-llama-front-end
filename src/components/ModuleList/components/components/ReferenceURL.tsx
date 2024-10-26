@@ -17,6 +17,7 @@ const ReferenceURL = ({
         <p>{referenceURL}</p>
       ) : (
         <input
+          className="w-full"
           type="text"
           value={referenceURL}
           onChange={(e) => {

@@ -12,7 +12,7 @@ function App({ userId }: Props) {
   const [activeCategoryId, setActiveCategoryId] = useState<number | null>(null);
 
   return (
-    <div className="App">
+    <div>
       <div className="text-center text-4xl m-5">
         <h1>Llama Llama</h1>
       </div>

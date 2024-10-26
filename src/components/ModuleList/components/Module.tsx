@@ -1,9 +1,9 @@
 import ReferenceURL from "./components/ReferenceURL";
 import Body from "./components/Body";
-// import Solution from "./Solution";
 // import PrettyDecent from "./components/PrettyDecent";
 import { ModuleInterface } from "../../../interfaces/dataInterface";
 import { useState } from "react";
+import Solution from "./components/Solution";
 
 interface Props {
   data: ModuleInterface;
@@ -47,7 +47,8 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
         <ReferenceURL
           currentView={currentView}
           handlePropertyChange={handlePropertyChange}
-          referenceURL={data.referenceUrl}
+          //PRESTON changed referenceURL -> reference_url to display
+          referenceURL={data.reference_url}
         />
         <Body
           currentView={currentView}
@@ -56,7 +57,14 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
         />
         {/* PRESTON Commented out text editor due to depreciation issues */}
         {/* <PrettyDecent handlePropertyChange={handlePropertyChange} /> */}
-
+        
+        {/* PRESTON replaced solution content with body code to replace with prettydecenttexteditor */}
+        <Solution
+          currentView={currentView}
+          handlePropertyChange={handlePropertyChange}
+          moduleSolution={data.solution}
+        />
+        
         <button className="border-2 m-1" onClick={handleChangeView}>Change view</button>
         <button className="border-2 m-1" onClick={handleDeleteModule(data.id, index)}>Delete</button>
       </div>
