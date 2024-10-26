@@ -17,7 +17,7 @@ const ModuleList = ({ activeCategoryId }: Props) => {
     handleFetchModules();
     //PRESTON clicking category shows modules if insert active categoryID below
     //PRESTON Clicking add modules shows immediately when adding modules state here
-  }, [activeCategoryId, modules]);
+  }, [activeCategoryId]);
 
   // Handlers ->
   const handleAddModule = (
@@ -29,8 +29,7 @@ const ModuleList = ({ activeCategoryId }: Props) => {
       const statusCode = await addModule(categoryId, moduleTitle, moduleUrl);
       if (statusCode === 201) {
         // This will edit into the db, but we need to change it in local.
-        // alert("edited");
-        //PRESTON trying to change in local
+        alert("edited");
         
       }
     };
@@ -91,7 +90,7 @@ const ModuleList = ({ activeCategoryId }: Props) => {
             />
           </div>
 
-      {activeCategoryId ? (
+      {modules ? (
 
           <div className="border-2 top-1/4 w-1/2 absolute m-4">    
             {modules.map((item, index) => {

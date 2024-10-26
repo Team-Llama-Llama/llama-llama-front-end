@@ -48,7 +48,6 @@ export const deleteCategory = async (categoryId: number) => {
 };
 
 // fetch for modules
-
 export const getModules = async (categoryId: number) => {
   const response = await fetch(`${API_URL}/categories/${categoryId}/modules`);
   return response.json();
@@ -85,6 +84,8 @@ export const editModule = async (
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(moduleEdited),
   });
+  // PRESTON identified editing issue, invalid or missing "categoryId" + referenceURL must be string
+  // console.log(response.json())
   return response.json();
 };
 

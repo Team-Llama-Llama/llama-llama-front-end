@@ -14,7 +14,16 @@ const ReferenceURL = ({
   return (
     <div className="border-2">
       {currentView === "normalView" ? (
-        <p>{referenceURL}</p>
+        // <p>{referenceURL}</p>
+        <div>
+            <div>
+                <iframe width="560"
+                        height="200"
+                        src={referenceURL}
+                        >
+                </iframe>
+            </div>
+        </div>
       ) : (
         <input
           className="w-full"
