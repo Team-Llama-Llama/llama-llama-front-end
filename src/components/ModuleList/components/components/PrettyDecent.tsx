@@ -1,6 +1,6 @@
 import "quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
-import { EditedProperties } from "./Module";
+import { EditedProperties } from "../Module";
 
 interface Props {
   handlePropertyChange: (property: EditedProperties, value: string) => void;

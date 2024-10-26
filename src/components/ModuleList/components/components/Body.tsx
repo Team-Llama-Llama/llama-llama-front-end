@@ -13,7 +13,7 @@ const Body = ({ moduleBody, currentView, handlePropertyChange }: Props) => {
   };
 
   return (
-    <div>
+    <div className="border-2">
       {currentView === "editView" ? (
         <>
           <textarea value={moduleBody} onChange={(e) => handleTextChange(e)} />

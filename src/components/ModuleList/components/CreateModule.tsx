@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 interface Props {
-  activeCategoryId: number;
+  activeCategoryId: number | null;
   handleAddModule: (
     categoryId: number,
     title: string,
@@ -15,21 +15,23 @@ const CreateModule = ({ activeCategoryId, handleAddModule }: Props) => {
   const [referenceUrlValue, setReferenceUrlValue] = useState("");
 
   return (
-    <div>
+    <div className="border-2 p-5">
       <form>
-        <input
+        <input className="border-2 m-1 w-full"
           type="text"
           placeholder="Title"
           value={titleValue}
           onChange={(e) => setTitleValue(e.target.value)}
         />
-        <input
+        <br/>
+        <input className="border-2 m-1 w-full"
           type="text"
           placeholder="Enter a URL"
           value={referenceUrlValue}
           onChange={(e) => setReferenceUrlValue(e.target.value)}
         />
-        <button
+        <br/>
+        <button className="border-2 p-1 m-1 w-full"
           type="button"
           onClick={handleAddModule(
             activeCategoryId,

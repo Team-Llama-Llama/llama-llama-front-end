@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CategoryList from "./components/CategoryList/CategoryList";
 import ModuleList from "./components/ModuleList/ModuleList";
+import "./app.css"
 
 interface Props {
   userId: number;
@@ -12,21 +13,22 @@ function App({ userId }: Props) {
 
   return (
     <div className="App">
-      <div className="Header">
+      <div className="text-center text-4xl m-5">
         <h1>Llama Llama</h1>
       </div>
 
+      <div className="flex items-center justify-center">
+        <ModuleList activeCategoryId={activeCategoryId} />
+      </div>
+
       {/* Side bar in the left */}
-      <div className="CategoryMenu">
+      <div className="flex items-center justify-start absolute top-20">
         <CategoryList
           userId={userId}
           setActiveCategoryId={setActiveCategoryId}
         />
       </div>
 
-      <div className="ModuleList">
-        <ModuleList activeCategoryId={activeCategoryId} />
-      </div>
     </div>
   );
 }

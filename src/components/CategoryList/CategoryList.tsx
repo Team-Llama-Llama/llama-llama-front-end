@@ -63,14 +63,14 @@ const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
   };
 
   return (
-    <div>
+    <div className="border-2 w-72 p-1">
       {categories.map((category, index) => {
         return (
-          <div className="category" key={category.id}>
-            <button onClick={handleCategoryClicked(category.id)}>
+          <div className="border-2 p-1" key={category.id}>
+            <button className="border-2 p-1 w-3/4" onClick={handleCategoryClicked(category.id)}>
               {category.name}
             </button>
-            <button
+            <button className="border-2 p-1 w-1/4"
               onClick={() => {
                 handleDeleteCategory(category.id, index);
               }}

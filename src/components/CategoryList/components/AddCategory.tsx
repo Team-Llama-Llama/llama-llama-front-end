@@ -15,15 +15,16 @@ const AddCategory = ({ handleAddCategory }: Props) => {
   // };
 
   return (
-    <form>
+    <form className="border-2 p-1">
       <input
+        className="border-2 p-1 w-3/4"
         type="text"
         placeholder="New Category Name"
         value={categoryName}
         onChange={(e) => setCategoryName(e.target.value)}
       />
-      <button type="button" onClick={handleAddCategory(categoryName)}>
-        Add Category
+      <button className="border-2 p-1 w-1/4" type="button" onClick={handleAddCategory(categoryName)}>
+        Add 
       </button>
     </form>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { editModule } from "../utilities/Api";
+import { editModule } from "../../../../utilities/Api";
 
 interface Props {
     moduleId: number;

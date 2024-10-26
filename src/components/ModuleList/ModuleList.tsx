@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import Module from "./components/Module";
 import CreateModule from "./components/CreateModule";
-import { editModule, addModule } from "../../utilities/Api";
 import { ModuleInterface } from "../../interfaces/dataInterface";
-import { deleteModule, getModules } from "../../utilities/Api";
+import { editModule, addModule, deleteModule, getModules } from "../../utilities/Api";
 
 interface Props {
   activeCategoryId: number | null;
@@ -16,7 +15,8 @@ const ModuleList = ({ activeCategoryId }: Props) => {
   useEffect(() => {
     // Imagine that this will work at the first render
     handleFetchModules();
-  }, []);
+    //PRESTON clicking category shows modules if insert active categoryID below
+  }, [activeCategoryId]);
 
   // Handlers ->
   const handleAddModule = (
@@ -28,10 +28,22 @@ const ModuleList = ({ activeCategoryId }: Props) => {
       const statusCode = await addModule(categoryId, moduleTitle, moduleUrl);
       if (statusCode === 201) {
         // This will edit into the db, but we need to change it in local.
-        alert("edited");
+        // alert("edited");
+        //PRESTON trying to change in local
+        
       }
     };
   };
+
+  // const handleAddCategory = (categoryName: string) => {
+  //   return async () => {
+  //     const objectCreated = await addCategory(categoryName);
+  //     // Its correctly validate it?
+  //     if (objectCreated) {
+  //       setCategories([...categories, objectCreated.data]);
+  //     }
+  //   };
+  // };
 
   const handleDeleteModule = (moduleId: number | undefined, index: number) => {
     return async () => {
@@ -71,20 +83,23 @@ const ModuleList = ({ activeCategoryId }: Props) => {
 
   return (
     <>
-      {activeCategoryId ? (
-        <>
-          <div>
+          <div className="w-1/2">
             <CreateModule
               handleAddModule={handleAddModule}
               activeCategoryId={activeCategoryId}
             />
+          </div>
+
+      {activeCategoryId ? (
+          <div className="border-2 top-1/4 w-1/2 absolute m-4">
 
             {modules.map((item, index) => {
               return (
-                <div className="module" key={index}>
+                <div  key={index}>
                   <Module
                     data={item}
-                    key={index}
+                    // PRESTON: Changed from key to index due to console error saying cannot use key
+                    index={index}
                     handleDeleteModule={handleDeleteModule}
                     handleEditModule={handleEditedModule}
                   />
@@ -92,7 +107,6 @@ const ModuleList = ({ activeCategoryId }: Props) => {
               );
             })}
           </div>
-        </>
       ) : null}
     </>
   );

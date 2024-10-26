@@ -1,4 +1,4 @@
-import { Views, EditedProperties } from "./Module";
+import { Views, EditedProperties } from "../Module";
 
 interface Props {
   currentView: Views;
@@ -12,7 +12,7 @@ const ReferenceURL = ({
   handlePropertyChange,
 }: Props) => {
   return (
-    <>
+    <div className="border-2">
       {currentView === "normalView" ? (
         <p>{referenceURL}</p>
       ) : (
@@ -24,7 +24,7 @@ const ReferenceURL = ({
           }}
         />
       )}
-    </>
+    </div>
   );
 };
 
