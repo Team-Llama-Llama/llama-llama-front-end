@@ -61,6 +61,7 @@ export const addModule = async (
   const newModuleObject: ModuleInterface = {
     categoryId: categoryId,
     title: title,
+    //PRESTON may need to change from referenceURL -> reference_url (have not edited yet)
     referenceUrl: referenceUrl,
     body: "",
     solution: "",

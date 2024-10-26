@@ -16,6 +16,7 @@ interface Props {
 }
 
 // Move this export to a interface
+//PRESTON may need to change from referenceURL -> reference_url (have not edited yet)
 export type EditedProperties = "referenceUrl" | "solution" | "body";
 export type Views = "editView" | "normalView";
 
@@ -47,7 +48,7 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
         <ReferenceURL
           currentView={currentView}
           handlePropertyChange={handlePropertyChange}
-          //PRESTON changed referenceURL -> reference_url to display
+          //PRESTON changed referenceURL -> reference_url in order to display referenceurl in module
           referenceURL={data.reference_url}
         />
         <Body

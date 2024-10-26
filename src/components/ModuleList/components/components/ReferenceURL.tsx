@@ -30,6 +30,7 @@ const ReferenceURL = ({
           type="text"
           value={referenceURL}
           onChange={(e) => {
+            //PRESTON may need to change from referenceURL -> reference_url (have not edited yet)
             handlePropertyChange("referenceUrl", e.target.value);
           }}
         />
