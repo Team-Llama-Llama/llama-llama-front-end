@@ -1,3 +1,4 @@
+//DEPRECIATED CODE
 import "quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import { EditedProperties } from "../Module";

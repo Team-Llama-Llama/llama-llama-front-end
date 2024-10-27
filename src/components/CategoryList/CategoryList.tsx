@@ -24,7 +24,6 @@ const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
 
   // Debug
   useEffect(() => {
-    console.log(categories);
   }, [categories]);
 
   // Handlers
@@ -37,7 +36,6 @@ const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
   // HTTP handling
   const handleFetchCategories = async () => {
     const allCategories = await getCategories(userId);
-    console.log("Inside fetch categories", userId, allCategories);
     setCategories(allCategories);
   };
 
@@ -63,19 +61,19 @@ const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
   };
 
   return (
-    <div className="border-2 w-72 p-1">
+    <div className="border-2 w-72 p-3 rounded bg-sky-50">
       {categories.map((category, index) => {
         return (
-          <div className="border-2 p-1" key={category.id}>
-            <button className="border-2 p-1 w-3/4" onClick={handleCategoryClicked(category.id)}>
+          <div className="p-1" key={category.id}>
+            <button className="border-2 rounded p-1 w-10/12 bg-blue-400 hover:bg-blue-500 text-white font-bold" onClick={handleCategoryClicked(category.id)}>
               {category.name}
             </button>
-            <button className="border-2 p-1 w-1/4"
+            <button className="border-2 p-1 w-2/12 bg-red-100 hover:bg-red-200 rounded"
               onClick={() => {
                 handleDeleteCategory(category.id, index);
               }}
             >
-              Delete
+              X
             </button>
           </div>
         );

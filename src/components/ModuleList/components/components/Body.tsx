@@ -1,4 +1,3 @@
-// import { ModuleInterface } from "./dataInterface"
 import { EditedProperties, Views } from "../Module";
 
 interface Props {
@@ -13,7 +12,7 @@ const Body = ({ moduleBody, currentView, handlePropertyChange }: Props) => {
   };
   // Controlled components
   return (
-    <div className="border-2">
+    <div className="border-2 m-1">
       {currentView === "editView" ? (
         <>
           <textarea className="w-full" value={moduleBody} onChange={(e) => {
