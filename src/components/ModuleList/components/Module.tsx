@@ -25,8 +25,6 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
   const [currentView, setCurrentView] = useState<Views>("normalView");
   const [localData, setLocalData] = useState<ModuleInterface>({ ...data });
 
-
-
   // Handler
   const handleChangeView = () => {
     if (currentView === "normalView") {
@@ -42,6 +40,7 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
     setLocalData(temp);
     handleEditModule(temp);
   };
+
 
   return (
     <>

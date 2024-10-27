@@ -12,7 +12,7 @@ const Body = ({ moduleBody, currentView, handlePropertyChange }: Props) => {
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     handlePropertyChange("body", event.target.value);
   };
-
+  // Controlled components
   return (
     <div className="border-2">
       {currentView === "editView" ? (
