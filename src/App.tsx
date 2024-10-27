@@ -1,54 +1,50 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import CategoryMenu from "./components/CategoryMenu";
-import ModuleList from "./components/ModuleList";
-import { login } from "./utilities/auth";
-import { getModules } from "./utilities/Api";
-import { CategoryInterface, ModuleInterface } from "./components/dataInterface";
+import { useState } from "react";
+import CategoryList from "./components/CategoryList/CategoryList";
+import ModuleList from "./components/ModuleList/ModuleList";
+import { logout } from "./utilities/auth";
+import "./app.css"
 
-function App() {
+interface Props {
+  userId: number;
+}
 
-  const [categories, setCategories] = useState<CategoryInterface[]>([]);
-  const [modules, setModules] = useState<ModuleInterface[]>([]);
+function App({ userId }: Props) {
+  // Add typescript correct typo
+  const [activeCategoryId, setActiveCategoryId] = useState<number | null>(null);
 
-  useEffect(()=> {   
-    userLogin() 
-  },[]);
+async function handleLogout() {
+  const loggingOut = await logout();
+  window.location.reload();
+  return loggingOut;
+}
 
-  async function userLogin() {
-      const categories = await login();
-      setCategories(categories.data);
-  }
-
-  async function getModulesHandler (categoryId: number) {
-      const modules = await getModules(categoryId);
-      setModules(modules);
-  }
-  
   return (
-
-    <div className="App">
-
-      <div className="Header">
+    <div>
+      <div className="text-center text-4xl m-5">
         <h1>Llama Llama</h1>
       </div>
-    
-      <div className="CategoryMenu">
-        <CategoryMenu 
-          categories={categories}
-          getModulesHandler={getModulesHandler}
+      <div>
+        <button 
+          className="border-2 p-2 flex items-center absolute top-5 right-10"
+          type="button"
+          onClick={()=>handleLogout()}
+          >Logout</button>
+      </div>
+
+      <div className="flex items-center justify-center">
+        <ModuleList activeCategoryId={activeCategoryId} />
+      </div>
+
+      {/* Side bar in the left */}
+      <div className="flex items-center justify-start absolute top-20">
+        <CategoryList
+          userId={userId}
+          setActiveCategoryId={setActiveCategoryId}
         />
       </div>
 
-      <div className="ModuleList">
-        <ModuleList 
-          modules={modules}
-        />
-      </div>
-    
     </div>
-
-  )
+  );
 }
 
 export default App;

@@ -12,10 +12,11 @@ interface CategoryInterface {
 }
 
 interface ModuleInterface {
-  id: number;
+  id?: number;
   categoryId: number;
   title: string;
   body: string;
+  //PRESTON may need to change from referenceURL -> reference_url (have not edited yet)
   referenceUrl: string;
   solution: string;
   createdAt: string;
