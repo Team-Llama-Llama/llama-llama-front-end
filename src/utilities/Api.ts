@@ -73,7 +73,6 @@ export const addModule = async (
   const newModuleObject: ModuleInterface = {
     categoryId: categoryId,
     title: title,
-    //PRESTON may need to change from referenceURL -> reference_url (have not edited yet)
     referenceUrl: referenceUrl,
     body: "",
     solution: "",
@@ -99,9 +98,6 @@ export const editModule = async (
     body: JSON.stringify(moduleEdited),
         credentials: "include"
   });
-  // We can print to see if this was succesfully
-  const parsedResponse  = await response.json();
-  console.log(parsedResponse);
   return response.status;
 };
 

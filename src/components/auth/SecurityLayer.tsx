@@ -19,7 +19,6 @@ function SecurityLayer() {
   }
 
   useEffect(() => {
-    console.log(document.cookie);
     userLogin();
   }, []);
 
@@ -31,20 +30,19 @@ function SecurityLayer() {
       
       :
 
-      <div className="flex items-center justify-center">
-        <h1 className="text-2xl">Please Log In</h1>
-        <form className="bottom-">
-          <div>
+      <div className="flex items-baseline justify-center">
+        <form>
+          <h1 className="text-4xl m-10">Llama Llama Login</h1>
+          <div >
             <p>Username</p>
             <input className="border-2" type="text" onChange={e => setUserName(e.target.value)} />
-          </div>
-          <div>
+
             <p>Password</p>
             <input className="border-2" type="password" onChange={e => setPassword(e.target.value)} />
           </div>
           <div>
             <button 
-            className="border-2 mt-2 p-1" 
+            className="border-2 mt-2 p-1 bg-gray-50 hover:bg-gray-200" 
             type="button"
             onClick={userLogin}
             >Submit</button>

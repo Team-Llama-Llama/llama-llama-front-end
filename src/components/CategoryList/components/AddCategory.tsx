@@ -15,7 +15,7 @@ const AddCategory = ({ handleAddCategory }: Props) => {
   // };
 
   return (
-    <form className="border-2 p-1">
+    <form className="p-1">
       <input
         className="border-2 p-1 w-3/4"
         type="text"
@@ -23,7 +23,7 @@ const AddCategory = ({ handleAddCategory }: Props) => {
         value={categoryName}
         onChange={(e) => setCategoryName(e.target.value)}
       />
-      <button className="border-2 p-1 w-1/4" type="button" onClick={handleAddCategory(categoryName)}>
+      <button className="border-2 p-1 w-1/4 bg-blue-400 hover:bg-blue-500 text-white" type="button" onClick={handleAddCategory(categoryName)}>
         Add 
       </button>
     </form>

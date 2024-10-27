@@ -89,7 +89,7 @@ const ModuleList = ({ activeCategoryId }: Props) => {
 
       {modules ? (
 
-          <div className="border-2 top-1/4 w-1/2 absolute m-4">    
+          <div className="border-2 top-1/4 w-1/2 absolute m-4 bg-sky-50">    
             {modules.map((item, index) => {
               return (
                 <div  key={index}>
