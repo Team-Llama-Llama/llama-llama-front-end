@@ -11,6 +11,7 @@ const ReferenceURL = ({
   currentView,
   handlePropertyChange,
 }: Props) => {
+
   return (
     <div className="border-2">
       {currentView === "normalView" ? (

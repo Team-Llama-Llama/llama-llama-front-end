@@ -1,5 +1,6 @@
 // import { ModuleInterface } from "./dataInterface"
 import { EditedProperties, Views } from "../Module";
+import { useState } from "react";
 
 interface Props {
   moduleBody: string;
@@ -16,7 +17,10 @@ const Body = ({ moduleBody, currentView, handlePropertyChange }: Props) => {
     <div className="border-2">
       {currentView === "editView" ? (
         <>
-          <textarea className="w-full" value={moduleBody} onChange={(e) => handleTextChange(e)} />
+          <textarea className="w-full" value={moduleBody} onChange={(e) => {
+            e.preventDefault();
+            handleTextChange(e);
+          }} />
         </>
       ) : (
         <>

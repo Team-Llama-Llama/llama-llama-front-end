@@ -53,11 +53,15 @@ export const getModules = async (categoryId: number) => {
   return response.json();
 };
 
+interface ApiResponse <T> {
+  message: string;
+  data: T
+}
 export const addModule = async (
   categoryId: number,
   title: string,
   referenceUrl: string
-): Promise<number> => {
+): Promise<ApiResponse<ModuleInterface>> => {
   const newModuleObject: ModuleInterface = {
     categoryId: categoryId,
     title: title,
@@ -73,7 +77,7 @@ export const addModule = async (
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newModuleObject),
   });
-  return response.status;
+  return response.json();
 };
 
 export const editModule = async (
@@ -85,9 +89,10 @@ export const editModule = async (
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(moduleEdited),
   });
-  // PRESTON identified editing issue, invalid or missing "categoryId" + referenceURL must be string
-  // console.log(response.json())
-  return response.json();
+  // We can print to see if this was succesfully
+  const parsedResponse  = await response.json();
+  console.log(parsedResponse);
+  return response.status;
 };
 
 export const deleteModule = async (moduleId: number) => {

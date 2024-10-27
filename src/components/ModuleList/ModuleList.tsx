@@ -15,8 +15,6 @@ const ModuleList = ({ activeCategoryId }: Props) => {
   useEffect(() => {
     // Imagine that this will work at the first render
     handleFetchModules();
-    //PRESTON clicking category shows modules if insert active categoryID below
-    //PRESTON Clicking add modules shows immediately when adding modules state here
   }, [activeCategoryId]);
 
   // Handlers ->
@@ -26,11 +24,9 @@ const ModuleList = ({ activeCategoryId }: Props) => {
     moduleUrl: string
   ) => {
     return async () => {
-      const statusCode = await addModule(categoryId, moduleTitle, moduleUrl);
-      if (statusCode === 201) {
-        // This will edit into the db, but we need to change it in local.
-        alert("edited");
-        
+      const apiResponse = await addModule(categoryId, moduleTitle, moduleUrl);
+      if (apiResponse) {
+        setModules([...modules, apiResponse.data])
       }
     };
   };
@@ -64,9 +60,11 @@ const ModuleList = ({ activeCategoryId }: Props) => {
   const handleEditedModule = async (editedModule: ModuleInterface) => {
     if (editedModule.id !== undefined) {
       const status = await editModule(editedModule.id, editedModule);
-      if (status === 204) {
-        alert("allelya");
-      }
+      // if (status === 200) {
+      //   // Succesfully
+      // } else {
+      //   console.error("Something is happenning!")
+      // }
     }
   };
 
@@ -98,7 +96,6 @@ const ModuleList = ({ activeCategoryId }: Props) => {
                 <div  key={index}>
                   <Module
                     data={item}
-                    // PRESTON: Changed from key to index due to console error saying cannot use key
                     index={index}
                     handleDeleteModule={handleDeleteModule}
                     handleEditModule={handleEditedModule}

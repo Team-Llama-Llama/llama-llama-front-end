@@ -2,7 +2,7 @@ import ReferenceURL from "./components/ReferenceURL";
 import Body from "./components/Body";
 // import PrettyDecent from "./components/PrettyDecent";
 import { ModuleInterface } from "../../../interfaces/dataInterface";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Solution from "./components/Solution";
 
 interface Props {
@@ -15,6 +15,7 @@ interface Props {
   handleEditModule: (editedModule: ModuleInterface) => Promise<void>;
 }
 
+
 // Move this export to a interface
 //PRESTON may need to change from referenceURL -> reference_url (have not edited yet)
 export type EditedProperties = "referenceUrl" | "solution" | "body";
@@ -23,6 +24,8 @@ export type Views = "editView" | "normalView";
 const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) => {
   const [currentView, setCurrentView] = useState<Views>("normalView");
   const [localData, setLocalData] = useState<ModuleInterface>({ ...data });
+
+
 
   // Handler
   const handleChangeView = () => {
@@ -48,13 +51,12 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
         <ReferenceURL
           currentView={currentView}
           handlePropertyChange={handlePropertyChange}
-          //PRESTON changed referenceURL -> reference_url in order to display referenceurl in module
-          referenceURL={data.reference_url}
+          referenceURL={localData.referenceUrl}
         />
         <Body
           currentView={currentView}
           handlePropertyChange={handlePropertyChange}
-          moduleBody={data.body}
+          moduleBody={localData.body}
         />
         {/* PRESTON Commented out text editor due to depreciation issues */}
         {/* <PrettyDecent handlePropertyChange={handlePropertyChange} /> */}
@@ -63,7 +65,7 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
         <Solution
           currentView={currentView}
           handlePropertyChange={handlePropertyChange}
-          moduleSolution={data.solution}
+          moduleSolution={localData.solution}
         />
         
         <button className="border-2 m-1" onClick={handleChangeView}>Change view</button>
