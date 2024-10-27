@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface Props {
-  activeCategoryId: number | null;
+  activeCategoryId: number;
   handleAddModule: (
     categoryId: number,
     title: string,

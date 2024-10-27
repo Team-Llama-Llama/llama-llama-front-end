@@ -12,18 +12,21 @@ export const getCategories = async (
   const response = await fetch(`${API_URL}/users/${userId}/categories`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
+    credentials: "include"
   });
   return response.json();
 };
 
 export const addCategory = async (
-  name: string
+  name: string,
+  userId: number
 ): Promise<{ message: string; data: CategoryInterface }> => {
   //Need to add auth user
-  const response = await fetch(`${API_URL}/users/2/categories`, {
+  const response = await fetch(`${API_URL}/users/${userId}/categories`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name }),
+    credentials: "include"
   });
   return response.json();
 };
@@ -36,6 +39,7 @@ export const editCategory = async (
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ categoryEdited }),
+    credentials: "include"
   });
   return response.json();
 };
@@ -43,13 +47,17 @@ export const editCategory = async (
 export const deleteCategory = async (categoryId: number) => {
   const response = await fetch(`${API_URL}/categories/${categoryId}`, {
     method: "DELETE",
+    credentials: "include"
   });
   return response.status;
 };
 
 // fetch for modules
 export const getModules = async (categoryId: number) => {
-  const response = await fetch(`${API_URL}/categories/${categoryId}/modules`);
+  const response = await fetch(`${API_URL}/categories/${categoryId}/modules`, {
+    method: "GET",
+    credentials: "include"
+  });
   return response.json();
 };
 
@@ -76,6 +84,7 @@ export const addModule = async (
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newModuleObject),
+        credentials: "include"
   });
   return response.json();
 };
@@ -88,6 +97,7 @@ export const editModule = async (
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(moduleEdited),
+        credentials: "include"
   });
   // We can print to see if this was succesfully
   const parsedResponse  = await response.json();
@@ -98,6 +108,7 @@ export const editModule = async (
 export const deleteModule = async (moduleId: number) => {
   const response = await fetch(`${API_URL}/modules/${moduleId}`, {
     method: "DELETE",
+        credentials: "include"
   });
   return response.status;
 };

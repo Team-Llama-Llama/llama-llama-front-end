@@ -2,8 +2,8 @@ import ReferenceURL from "./components/ReferenceURL";
 import Body from "./components/Body";
 // import PrettyDecent from "./components/PrettyDecent";
 import { ModuleInterface } from "../../../interfaces/dataInterface";
-import { useEffect, useState } from "react";
 import Solution from "./components/Solution";
+import { useState } from "react";
 
 interface Props {
   data: ModuleInterface;

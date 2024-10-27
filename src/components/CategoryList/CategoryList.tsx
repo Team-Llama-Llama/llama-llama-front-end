@@ -43,7 +43,7 @@ const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
 
   const handleAddCategory = (categoryName: string) => {
     return async () => {
-      const objectCreated = await addCategory(categoryName);
+      const objectCreated = await addCategory(categoryName, userId);
       // Its correctly validate it?
       if (objectCreated) {
         setCategories([...categories, objectCreated.data]);

@@ -1,6 +1,5 @@
 // import { ModuleInterface } from "./dataInterface"
 import { EditedProperties, Views } from "../Module";
-import { useState } from "react";
 
 interface Props {
   moduleBody: string;

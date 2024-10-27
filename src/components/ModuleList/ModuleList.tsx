@@ -59,12 +59,7 @@ const ModuleList = ({ activeCategoryId }: Props) => {
 
   const handleEditedModule = async (editedModule: ModuleInterface) => {
     if (editedModule.id !== undefined) {
-      const status = await editModule(editedModule.id, editedModule);
-      // if (status === 200) {
-      //   // Succesfully
-      // } else {
-      //   console.error("Something is happenning!")
-      // }
+      await editModule(editedModule.id, editedModule);
     }
   };
 
@@ -81,12 +76,16 @@ const ModuleList = ({ activeCategoryId }: Props) => {
 
   return (
     <>
-          <div className="w-1/2">
+          {activeCategoryId !== null 
+            ?
+            <div className="w-1/2">
             <CreateModule
               handleAddModule={handleAddModule}
               activeCategoryId={activeCategoryId}
             />
-          </div>
+            </div>
+            : null
+          }
 
       {modules ? (
 
