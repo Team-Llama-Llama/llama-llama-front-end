@@ -6,9 +6,10 @@ import "./app.css"
 
 interface Props {
   userId: number;
+  userName: string;
 }
 
-function App({ userId }: Props) {
+function App({ userId, userName }: Props) {
   const [activeCategoryId, setActiveCategoryId] = useState<number | null>(null);
 
 async function handleLogout() {
@@ -33,6 +34,7 @@ async function handleLogout() {
 
         
       <div>
+        <span className="italic p-2 flex absolute top-5 left-3">Welcome, {userName}</span>
         <button 
           className="border-2 p-2 flex items-center absolute top-5 right-10 bg-slate-100 hover:bg-slate-300"
           type="button"

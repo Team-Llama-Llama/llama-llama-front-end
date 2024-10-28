@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // Auth
 import { login } from "../../utilities/auth";
 import App from "../../App";
@@ -18,15 +18,15 @@ function SecurityLayer() {
     }
   }
 
-  useEffect(() => {
-    userLogin();
-  }, []);
+  // useEffect(() => {
+  //   userLogin();
+  // }, []);
 
   return (
     <>
 
       {isAuth === true && activeUser 
-      ? <App userId={activeUser}></App> 
+      ? <App userId={activeUser} userName={userName}></App> 
       
       :
 
@@ -45,7 +45,14 @@ function SecurityLayer() {
             className="border-2 mt-2 p-1 bg-gray-50 hover:bg-gray-200" 
             type="button"
             onClick={userLogin}
-            >Submit</button>
+            >Login</button>
+          </div>
+          <div>
+            <button 
+            className="border-2 mt-2 p-1 bg-gray-50 hover:bg-gray-200" 
+            type="button"
+            onClick={userLogin}
+            >Register new user</button>
           </div>
         </form>
       </div>
