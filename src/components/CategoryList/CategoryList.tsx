@@ -79,7 +79,7 @@ const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
           </div>
         );
       })}
-      <AddCategory handleAddCategory={handleAddCategory} />
+      <AddCategory handleAddCategory={handleAddCategory} editing={editing} />
     </div>
   );
 };

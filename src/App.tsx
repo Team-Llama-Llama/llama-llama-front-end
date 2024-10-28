@@ -10,6 +10,11 @@ interface Props {
 
 function App({ userId }: Props) {
   const [activeCategoryId, setActiveCategoryId] = useState<number | null>(null);
+  const [editing, setEditing] = useState<boolean>(false); // when editing a module
+
+  const handleSetEditing = (value: boolean) => {
+    setEditing(value);
+  };
 
 async function handleLogout() {
   const loggingOut = await logout();
@@ -41,7 +46,10 @@ async function handleLogout() {
       </div>
 
       <div className="flex items-center justify-center">
-        <ModuleList activeCategoryId={activeCategoryId} />
+        <ModuleList 
+          activeCategoryId={activeCategoryId} 
+          handleSetEditing={handleSetEditing}
+        />
       </div>
 
       {/* Side bar in the left */}
@@ -49,6 +57,7 @@ async function handleLogout() {
         <CategoryList
           userId={userId}
           setActiveCategoryId={setActiveCategoryId}
+          editing={editing}
         />
       </div>
 
