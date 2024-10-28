@@ -21,13 +21,16 @@ export type Views = "editView" | "normalView";
 const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) => {
   const [currentView, setCurrentView] = useState<Views>("normalView");
   const [localData, setLocalData] = useState<ModuleInterface>({ ...data });
+  const [buttonString, setButtonString] = useState('edit');
 
   // Handler
   const handleChangeView = () => {
     if (currentView === "normalView") {
       setCurrentView("editView");
+      setButtonString('save');
     } else {
       setCurrentView("normalView");
+      setButtonString('edit');
     }
   };
 
@@ -61,8 +64,14 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
           moduleSolution={localData.solution}
         />
         
-        <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-11/12" onClick={handleChangeView}>Edit</button>
-        <button className="border-2 bg-red-100 hover:bg-red-200 w-1/12" onClick={handleDeleteModule(data.id, index)}>X</button>
+        { currentView === 'normalView' 
+          ? <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-11/12" onClick={handleChangeView}>{buttonString}</button>
+          : <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-full" onClick={handleChangeView}>{buttonString}</button>
+        }
+        
+        {currentView === 'normalView' && <button className="border-2 bg-red-100 hover:bg-red-200 w-1/12" onClick={handleDeleteModule(data.id, index)}>X</button>}
+        
+        
       </div>
     </>
   );
