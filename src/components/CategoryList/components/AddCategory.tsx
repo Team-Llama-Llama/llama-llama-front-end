@@ -2,9 +2,10 @@ import { useState } from "react";
 
 interface Props {
   handleAddCategory: (categoryName: string) => () => Promise<void>;
+  editing: boolean;
 }
 
-const AddCategory = ({ handleAddCategory }: Props) => {
+const AddCategory = ({ handleAddCategory, editing }: Props) => {
   const [categoryName, setCategoryName] = useState<string>("");
 
   //need to edit any for e
@@ -23,7 +24,11 @@ const AddCategory = ({ handleAddCategory }: Props) => {
         value={categoryName}
         onChange={(e) => setCategoryName(e.target.value)}
       />
-      <button className="border-2 p-1 w-1/4 bg-blue-400 hover:bg-blue-500 text-white" type="button" onClick={handleAddCategory(categoryName)}>
+      {
+      }
+      <button className={`border-2 p-1 w-1/4 ${
+        editing ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-blue-400 hover:bg-blue-500 text-white'
+      }`} type="button" onClick={handleAddCategory(categoryName)} disabled={editing}>
         Add 
       </button>
     </form>

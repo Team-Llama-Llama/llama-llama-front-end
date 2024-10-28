@@ -6,9 +6,10 @@ import { editModule, addModule, deleteModule, getModules } from "../../utilities
 
 interface Props {
   activeCategoryId: number | null;
+  handleSetEditing: (value: boolean) => void;
 }
 
-const ModuleList = ({ activeCategoryId }: Props) => {
+const ModuleList = ({ activeCategoryId, handleSetEditing }: Props) => {
   // States ->
   const [modules, setModules] = useState<ModuleInterface[]>([]);
 
@@ -98,6 +99,7 @@ const ModuleList = ({ activeCategoryId }: Props) => {
                     index={index}
                     handleDeleteModule={handleDeleteModule}
                     handleEditModule={handleEditedModule}
+                    handleSetEditing={handleSetEditing}
                   />
                 </div>
               );
