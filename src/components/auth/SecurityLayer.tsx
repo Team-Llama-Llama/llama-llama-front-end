@@ -3,6 +3,9 @@ import { useState } from "react";
 // Auth
 import { login, register } from "../../utilities/auth";
 import App from "../../App";
+//toast popups
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function SecurityLayer() {
   const [isAuth, setIsAuth] = useState<boolean>(false);
@@ -29,14 +32,27 @@ function SecurityLayer() {
     }
     const result = await register(regUserName, regPassword);
     console.log(result);
-    alert(`New user registered: ${regUserName}`);
+    toast.warn(`New user registered: ${regUserName}`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     changeToRegister();
   }
 
   function changeToRegister() {
+    let inputs = document.getElementsByTagName("input");
+    for (let input of inputs) {
+      input.value="";
+    };
     if (registration === true) {
       return setRegistration(false);
-    }
+    };
     setRegistration(true);
   }
 
@@ -110,6 +126,7 @@ function SecurityLayer() {
             </div>
           </>
         }
+        <ToastContainer/>
         </form>
       </div>
       }
