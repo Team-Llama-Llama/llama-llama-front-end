@@ -21,6 +21,8 @@ const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
 
   // Pick correct type! [ ]
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
+  const [editingCategoryId, setEditingCategoryId] = useState<number | null>(null); //Davide edit
+  const [newCategoryName, setNewCategoryName] = useState<string>("");              //Davide edit
 
   // Effects
   useEffect(() => {
