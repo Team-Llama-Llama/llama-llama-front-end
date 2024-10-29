@@ -13,11 +13,12 @@ import 'react-toastify/dist/ReactToastify.css';
 interface Props {
   userId: number;
   setActiveCategoryId: (category: number) => void;
+  setActiveCategoryName: (name: string) => void;
   editing: boolean;
 }
 
 
-const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
+const CategoryList = ({ userId, setActiveCategoryId, setActiveCategoryName, editing }: Props) => {
 
   // Pick correct type! [ ]
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
@@ -123,7 +124,10 @@ const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
             <>
               <button
                 className="border-2 rounded p-1 w-8/12 bg-blue-400 hover:bg-blue-500 text-white font-bold"
-                onClick={() => setActiveCategoryId(category.id)}
+                onClick={() => {
+                  setActiveCategoryId(category.id);
+                  setActiveCategoryName(category.name);
+                }}
               >
                 {category.name}
               </button>

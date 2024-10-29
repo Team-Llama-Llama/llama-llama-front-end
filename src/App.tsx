@@ -11,6 +11,7 @@ interface Props {
 
 function App({ userId, userName }: Props) {
   const [activeCategoryId, setActiveCategoryId] = useState<number | null>(null);
+  const [activeCategoryName, setActiveCategoryName] = useState<string | null>(null);
   const [editing, setEditing] = useState(false); // shared state to control editing a module
 
 async function handleLogout() {
@@ -43,8 +44,8 @@ async function handleLogout() {
           >Logout</button>
       </div>
 
-      <div className="flex items-center justify-center">
-        <ModuleList activeCategoryId={activeCategoryId} setEditing={setEditing} />
+      <div className="flex flex-col items-center justify-center">
+        <ModuleList activeCategoryId={activeCategoryId} setEditing={setEditing} activeCategoryName={activeCategoryName} />
       </div>
 
       {/* Side bar in the left */}
@@ -52,6 +53,7 @@ async function handleLogout() {
         <CategoryList
           userId={userId}
           setActiveCategoryId={setActiveCategoryId}
+          setActiveCategoryName={setActiveCategoryName}
           editing={editing}
         />
       </div>
