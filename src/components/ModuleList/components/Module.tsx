@@ -6,6 +6,7 @@ import Solution from "./components/Solution";
 import { useState } from "react";
 
 interface Props {
+  setEditing: (value: boolean) => void
   data: ModuleInterface;
   index: number;
   handleDeleteModule: (
@@ -18,7 +19,7 @@ interface Props {
 export type EditedProperties = "referenceUrl" | "solution" | "body";
 export type Views = "editView" | "normalView";
 
-const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) => {
+const Module = ({ setEditing, data, index, handleDeleteModule, handleEditModule }: Props) => {
   const [currentView, setCurrentView] = useState<Views>("normalView");
   const [localData, setLocalData] = useState<ModuleInterface>({ ...data });
 
@@ -26,8 +27,10 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
   const handleChangeView = () => {
     if (currentView === "normalView") {
       setCurrentView("editView");
+      setEditing(true);
     } else {
       setCurrentView("normalView");
+      setEditing(false);
     }
   };
 
@@ -61,8 +64,12 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
           moduleSolution={localData.solution}
         />
         
-        <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-11/12" onClick={handleChangeView}>Edit</button>
         <button className="border-2 bg-red-100 hover:bg-red-200 w-1/12" onClick={handleDeleteModule(data.id, index)}>X</button>
+        <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-11/12" onClick={handleChangeView}>Edit</button>
+        
+        
+        
+        
       </div>
     </>
   );
