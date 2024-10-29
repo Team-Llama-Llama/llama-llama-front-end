@@ -30,7 +30,7 @@ function SecurityLayer() {
       setIsAuth(true);
       setActiveUser(result.userId);
     } else {
-      return toast.warn(`User not found`)
+      return toast.warn(`Invalid username/password`)
     }
   }
 
