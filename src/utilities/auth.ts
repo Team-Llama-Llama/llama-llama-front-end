@@ -14,6 +14,15 @@ export const login = async (userName:string, password:string):ApiLoginResponse =
   return response.json();
 }
 
+export async function register (regUserName:string, regPassword:string) {
+  const response = await fetch(`${API_URL}/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username: regUserName, password: regPassword}),
+  });
+  return response.json();
+}
+
 export async function logout(): Promise<any>{
   const response = await fetch(`${API_URL}/logout`, {
     method: "POST",
