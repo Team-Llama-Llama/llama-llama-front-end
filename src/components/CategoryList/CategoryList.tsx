@@ -2,7 +2,6 @@ import { CategoryInterface } from "../../interfaces/dataInterface";
 import { useState, useEffect } from "react";
 import {
   deleteCategory,
-  editCategory,
   addCategory,
   getCategories,
 } from "../../utilities/Api";
@@ -13,14 +12,13 @@ import 'react-toastify/dist/ReactToastify.css';
 interface Props {
   userId: number;
   setActiveCategoryId: (category: number) => void;
-  editing: boolean;
 }
 
+
 const CategoryList = ({ userId, setActiveCategoryId, editing}: Props) => {
+
   // Pick correct type! [ ]
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
-  const [editingCategoryId, setEditingCategoryId] = useState<number | null>(null); //Davide edit
-  const [newCategoryName, setNewCategoryName] = useState<string>("");              //Davide edit
 
   // Effects
   useEffect(() => {
@@ -32,12 +30,12 @@ const CategoryList = ({ userId, setActiveCategoryId, editing}: Props) => {
   useEffect(() => {
   }, [categories]);
 
-  /*Handlers
-    function handleCategoryClicked(id: number) {
-      return () => {
+  // Handlers
+  function handleCategoryClicked(id: number) {
+    return () => {
       setActiveCategoryId(id);
     };
-  }*/
+  }
 
   // HTTP handling
   const handleFetchCategories = async () => {
@@ -65,6 +63,7 @@ const CategoryList = ({ userId, setActiveCategoryId, editing}: Props) => {
       alert("Error!");
     }
   };
+
 
   const handleEditCategory = (category: CategoryInterface) => {  //Davide edit
     setEditingCategoryId(category.id);
@@ -142,7 +141,6 @@ const CategoryList = ({ userId, setActiveCategoryId, editing}: Props) => {
         </div>
       ))}
       <AddCategory handleAddCategory={handleAddCategory} />
-
     </div>
 
   );
