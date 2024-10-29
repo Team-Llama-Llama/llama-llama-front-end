@@ -14,7 +14,9 @@ interface Props {
   setActiveCategoryId: (category: number) => void;
 }
 
-const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
+
+const CategoryList = ({ userId, setActiveCategoryId, editing}: Props) => {
+
   // Pick correct type! [ ]
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
 
