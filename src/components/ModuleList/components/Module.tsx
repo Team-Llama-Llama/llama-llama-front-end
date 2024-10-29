@@ -12,13 +12,14 @@ interface Props {
     moduleId: number | undefined,
     index: number
   ) => () => Promise<void>;
+  handleSetEditing: (value: boolean) => void;
   handleEditModule: (editedModule: ModuleInterface) => Promise<void>;
 }
 
 export type EditedProperties = "referenceUrl" | "solution" | "body";
 export type Views = "editView" | "normalView";
 
-const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) => {
+const Module = ({ data, index, handleDeleteModule, handleSetEditing, handleEditModule }: Props) => {
   const [currentView, setCurrentView] = useState<Views>("normalView");
   const [localData, setLocalData] = useState<ModuleInterface>({ ...data });
   const [buttonString, setButtonString] = useState('edit');
@@ -28,9 +29,11 @@ const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) =>
     if (currentView === "normalView") {
       setCurrentView("editView");
       setButtonString('save');
+      handleSetEditing(true);
     } else {
       setCurrentView("normalView");
       setButtonString('edit');
+      handleSetEditing(false);
     }
   };
 

@@ -2,9 +2,10 @@ import { useState } from "react";
 
 interface Props {
   handleAddCategory: (categoryName: string) => () => Promise<void>;
+  editing: boolean;
 }
 
-const AddCategory = ({ handleAddCategory }: Props) => {
+const AddCategory = ({ handleAddCategory, editing }: Props) => {
   const [categoryName, setCategoryName] = useState<string>("");
   const [error, setError] = useState<string>("");
 

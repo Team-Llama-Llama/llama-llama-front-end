@@ -11,9 +11,10 @@ import AddCategory from "./components/AddCategory";
 interface Props {
   userId: number;
   setActiveCategoryId: (category: number) => void;
+  editing: boolean;
 }
 
-const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
+const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
   // Pick correct type! [ ]
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
   const [editingCategoryId, setEditingCategoryId] = useState<number | null>(null); //Davide edit
@@ -127,6 +128,7 @@ const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
         </div>
       ))}
       <AddCategory handleAddCategory={handleAddCategory} />
+
     </div>
   );
 };
