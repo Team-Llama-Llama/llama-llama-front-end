@@ -19,29 +19,33 @@ function SecurityLayer() {
   const [regConfirmPassword, setRegConfirmPassword] = useState<string>("");
 
   async function userLogin() {
+    if (userName === "") {
+      return toast.warn(`You must enter a username`);
+    }
+    if (password === "") {
+      return toast.warn(`You must enter a password`);
+    }
     const result = await login(userName, password);
     if (result.userId) {
       setIsAuth(true);
       setActiveUser(result.userId);
+    } else {
+      return toast.warn(`User not found`)
     }
   }
 
   async function userRegister() {
-    if (regPassword !== regConfirmPassword) {
-      return alert("Passwords must match");
+    if (regUserName === "") {
+      return toast.warn(`You must enter a username`);
     }
-    const result = await register(regUserName, regPassword);
-    console.log(result);
-    toast.warn(`New user registered: ${regUserName}`, {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+    if (regPassword === "") {
+      return toast.warn(`You must enter a password`);
+    }
+    if (regPassword !== regConfirmPassword) {
+      return toast.warn(`Passwords must match`);
+    }
+    await register(regUserName, regPassword);
+    toast(`New user registered: ${regUserName}`);
     changeToRegister();
   }
 
@@ -56,10 +60,6 @@ function SecurityLayer() {
     setRegistration(true);
   }
 
-  // useEffect(() => {
-  //   userLogin();
-  // }, []);
-
   return (
     <>
 
@@ -70,7 +70,18 @@ function SecurityLayer() {
 
       <div className="flex items-baseline justify-center">
         <form>
-          <h1 className="text-4xl m-10">Llama Llama Login</h1>
+          
+        <img
+          className="size-10 absolute right-1/3 top-5"
+          src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png">
+        </img>
+        <img
+          className="size-10 absolute left-1/3 top-5"
+          src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png">
+        </img>
+        <div className="text-center text-4xl m-5 font-medium">
+          <h1>Llama Llama Login</h1>
+        </div>
           
           {registration === true
           ? <>
@@ -126,7 +137,16 @@ function SecurityLayer() {
             </div>
           </>
         }
-        <ToastContainer/>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+          draggable
+          pauseOnFocusLoss
+          theme="light"/>
         </form>
       </div>
       }

@@ -33,10 +33,10 @@ async function handleLogout() {
       </div>
 
         
-      <div>
-        <span className="italic p-2 flex absolute top-5 left-3">Welcome, {userName}</span>
+      <div className="flex items-center absolute top-5 right-10">
+        <span className="p-2 pr-4 italic">Welcome, {userName}</span>
         <button 
-          className="border-2 p-2 flex items-center absolute top-5 right-10 bg-slate-100 hover:bg-slate-300"
+          className="p-2 border-2 bg-slate-100 hover:bg-slate-300"
           type="button"
           onClick={()=>handleLogout()}
           >Logout</button>
