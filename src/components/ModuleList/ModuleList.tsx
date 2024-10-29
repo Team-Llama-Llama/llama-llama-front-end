@@ -93,7 +93,6 @@ const ModuleList = ({ activeCategoryId, setEditing, activeCategoryName }: Props)
       {/*
         Title of the Category
       */}
-
       {
         activeCategoryName ? (
           <div className="border-2 w-1/2 m-4 text-center font-bold text-xl bg-sky-50">{activeCategoryName}</div>

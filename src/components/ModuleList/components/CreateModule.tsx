@@ -15,6 +15,11 @@ const CreateModule = ({ activeCategoryId, handleAddModule }: Props) => {
   const [titleValue, setTitleValue] = useState("");
   const [referenceUrlValue, setReferenceUrlValue] = useState("");
 
+  const resetFields = () => {
+    setTitleValue('');
+    setReferenceUrlValue('');
+  }
+
   const invalidString = () => toast.warn("Title must not be an empty string", {
     position: "top-center",
     autoClose: 5000,
@@ -59,6 +64,7 @@ const CreateModule = ({ activeCategoryId, handleAddModule }: Props) => {
 
     const addModuleFunction = handleAddModule(activeCategoryId, titleValue, referenceUrlValue);
     await addModuleFunction();
+    resetFields();
   };
 
   return (
