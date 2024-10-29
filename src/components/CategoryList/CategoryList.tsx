@@ -4,6 +4,7 @@ import {
   deleteCategory,
   addCategory,
   getCategories,
+  editCategory,
 } from "../../utilities/Api";
 import AddCategory from "./components/AddCategory";
 import { ToastContainer, toast } from "react-toastify";
@@ -12,10 +13,11 @@ import 'react-toastify/dist/ReactToastify.css';
 interface Props {
   userId: number;
   setActiveCategoryId: (category: number) => void;
+  editing: boolean;
 }
 
 
-const CategoryList = ({ userId, setActiveCategoryId, editing}: Props) => {
+const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
 
   // Pick correct type! [ ]
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
@@ -140,7 +142,7 @@ const CategoryList = ({ userId, setActiveCategoryId, editing}: Props) => {
           <ToastContainer />
         </div>
       ))}
-      <AddCategory handleAddCategory={handleAddCategory} />
+      <AddCategory handleAddCategory={handleAddCategory} editing={editing} />
     </div>
 
   );
