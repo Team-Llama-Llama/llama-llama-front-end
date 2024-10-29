@@ -7,13 +7,17 @@ interface Props {
 
 const AddCategory = ({ handleAddCategory, editing }: Props) => {
   const [categoryName, setCategoryName] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
-  //need to edit any for e
-  // const handleSubmit = async (e: any) => {
-  //   e.preventDefault();
-  //   await addCategory(category);
-  //   window.location.reload();
-  // };
+  const handleClick = async () => {
+    if (!categoryName.trim()) {
+      setError("The category Names cannot be empty!");
+    } else {
+      setError("");
+      await handleAddCategory(categoryName)();
+      setCategoryName(""); 
+    }
+  };
 
   return (
     <form className="p-1">
@@ -24,14 +28,17 @@ const AddCategory = ({ handleAddCategory, editing }: Props) => {
         value={categoryName}
         onChange={(e) => setCategoryName(e.target.value)}
       />
-      {
-      }
-      <button className={`border-2 p-1 w-1/4 ${
-        editing ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-blue-400 hover:bg-blue-500 text-white'
-      }`} type="button" onClick={handleAddCategory(categoryName)} disabled={editing}>
+      <button
+        className="border-2 p-1 w-1/4 bg-blue-400 hover:bg-blue-500 text-white"
+        type="button"
+        onClick={handleClick}
+      >
         Add 
       </button>
+      {error && <p className="text-red-500 mt-1">{error}</p>}
     </form>
   );
 };
+
 export default AddCategory;
+
