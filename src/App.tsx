@@ -6,15 +6,11 @@ import "./app.css"
 
 interface Props {
   userId: number;
+  userName: string;
 }
 
-function App({ userId }: Props) {
+function App({ userId, userName }: Props) {
   const [activeCategoryId, setActiveCategoryId] = useState<number | null>(null);
-  const [editing, setEditing] = useState<boolean>(false); // when editing a module
-
-  const handleSetEditing = (value: boolean) => {
-    setEditing(value);
-  };
 
 async function handleLogout() {
   const loggingOut = await logout();
@@ -37,19 +33,17 @@ async function handleLogout() {
       </div>
 
         
-      <div>
+      <div className="flex items-center absolute top-5 right-10">
+        <span className="p-2 pr-4 italic">Welcome, {userName}</span>
         <button 
-          className="border-2 p-2 flex items-center absolute top-5 right-10 bg-slate-100 hover:bg-slate-300"
+          className="p-2 border-2 bg-slate-100 hover:bg-slate-300"
           type="button"
           onClick={()=>handleLogout()}
           >Logout</button>
       </div>
 
       <div className="flex items-center justify-center">
-        <ModuleList 
-          activeCategoryId={activeCategoryId} 
-          handleSetEditing={handleSetEditing}
-        />
+        <ModuleList activeCategoryId={activeCategoryId} />
       </div>
 
       {/* Side bar in the left */}
@@ -57,7 +51,6 @@ async function handleLogout() {
         <CategoryList
           userId={userId}
           setActiveCategoryId={setActiveCategoryId}
-          editing={editing}
         />
       </div>
 

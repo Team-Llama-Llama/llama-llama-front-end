@@ -12,28 +12,22 @@ interface Props {
     moduleId: number | undefined,
     index: number
   ) => () => Promise<void>;
-  handleSetEditing: (value: boolean) => void;
   handleEditModule: (editedModule: ModuleInterface) => Promise<void>;
 }
 
 export type EditedProperties = "referenceUrl" | "solution" | "body";
 export type Views = "editView" | "normalView";
 
-const Module = ({ data, index, handleDeleteModule, handleSetEditing, handleEditModule }: Props) => {
+const Module = ({ data, index, handleDeleteModule, handleEditModule }: Props) => {
   const [currentView, setCurrentView] = useState<Views>("normalView");
   const [localData, setLocalData] = useState<ModuleInterface>({ ...data });
-  const [buttonString, setButtonString] = useState('edit');
 
   // Handler
   const handleChangeView = () => {
     if (currentView === "normalView") {
       setCurrentView("editView");
-      setButtonString('save');
-      handleSetEditing(true);
     } else {
       setCurrentView("normalView");
-      setButtonString('edit');
-      handleSetEditing(false);
     }
   };
 
@@ -67,14 +61,8 @@ const Module = ({ data, index, handleDeleteModule, handleSetEditing, handleEditM
           moduleSolution={localData.solution}
         />
         
-        { currentView === 'normalView' 
-          ? <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-11/12" onClick={handleChangeView}>{buttonString}</button>
-          : <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-full" onClick={handleChangeView}>{buttonString}</button>
-        }
-        
-        {currentView === 'normalView' && <button className="border-2 bg-red-100 hover:bg-red-200 w-1/12" onClick={handleDeleteModule(data.id, index)}>X</button>}
-        
-        
+        <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-11/12" onClick={handleChangeView}>Edit</button>
+        <button className="border-2 bg-red-100 hover:bg-red-200 w-1/12" onClick={handleDeleteModule(data.id, index)}>X</button>
       </div>
     </>
   );
