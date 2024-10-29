@@ -78,11 +78,6 @@ const Module = ({ setEditing, data, index, handleDeleteModule, handleEditModule 
 
         {currentView === "normalView" && <button className="border-2 bg-red-100 hover:bg-red-200 w-1/12" onClick={handleDeleteModule(data.id, index)}>X</button>}
         
-        
-        
-        
-        
-        
       </div>
     </>
   );
