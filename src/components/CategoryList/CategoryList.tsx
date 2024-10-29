@@ -6,6 +6,8 @@ import {
   getCategories,
 } from "../../utilities/Api";
 import AddCategory from "./components/AddCategory";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
   userId: number;
@@ -60,26 +62,85 @@ const CategoryList = ({ userId, setActiveCategoryId }: Props) => {
     }
   };
 
+
+  const handleEditCategory = (category: CategoryInterface) => {  //Davide edit
+    setEditingCategoryId(category.id);
+    setNewCategoryName(category.name);
+  };
+
+  const invalidStringCategory = () => toast.warn("You have to give a name to the category", {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+
+  const handleUpdateCategory = async (categoryId: number) => {   //Davide edit
+    if (newCategoryName.trim()) {
+      const updatedCategory = await editCategory(categoryId, newCategoryName);
+      if (updatedCategory) {
+        setCategories(categories.map((categ) => 
+          categ.id === categoryId ? { ...categ, name: newCategoryName } : categ
+        ));
+        setEditingCategoryId(null);
+        setNewCategoryName("");
+      }
+    } else {
+      invalidStringCategory();
+    }
+  };
+
   return (
     <div className="border-2 w-72 p-3 rounded bg-sky-50">
-      {categories.map((category, index) => {
-        return (
-          <div className="p-1" key={category.id}>
-            <button className="border-2 rounded p-1 w-10/12 bg-blue-400 hover:bg-blue-500 text-white font-bold" onClick={handleCategoryClicked(category.id)}>
-              {category.name}
-            </button>
-            <button className="border-2 p-1 w-2/12 bg-red-100 hover:bg-red-200 rounded"
-              onClick={() => {
-                handleDeleteCategory(category.id, index);
-              }}
-            >
-              X
-            </button>
-          </div>
-        );
-      })}
+      {categories.map((category, index) => (
+        <div className="p-1" key={category.id}>
+          {editingCategoryId === category.id ? (
+            <>
+              <input
+                className="border-2 p-1 w-3/4"
+                type="text"
+                value={newCategoryName}
+                onChange={(e) => setNewCategoryName(e.target.value)}
+              />
+              <button
+                className="border-2 p-1 w-1/4 bg-blue-400 hover:bg-blue-500 text-white"
+                onClick={() => handleUpdateCategory(category.id)}
+              >
+                Save
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="border-2 rounded p-1 w-8/12 bg-blue-400 hover:bg-blue-500 text-white font-bold"
+                onClick={() => setActiveCategoryId(category.id)}
+              >
+                {category.name}
+              </button>
+              <button
+                className="border-2 p-1 w-2/12 bg-yellow-100 hover:bg-yellow-200 rounded"
+                onClick={() => handleEditCategory(category)}
+              >
+                Edit
+              </button>
+              <button
+                className="border-2 p-1 w-2/12 bg-red-100 hover:bg-red-200 rounded"
+                onClick={() => handleDeleteCategory(category.id, index)}
+              >
+                X
+              </button>
+            </>
+          )}
+          <ToastContainer />
+        </div>
+      ))}
       <AddCategory handleAddCategory={handleAddCategory} />
     </div>
+
   );
 };
 
