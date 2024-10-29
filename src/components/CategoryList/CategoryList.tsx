@@ -7,6 +7,8 @@ import {
   getCategories,
 } from "../../utilities/Api";
 import AddCategory from "./components/AddCategory";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
   userId: number;
@@ -69,6 +71,17 @@ const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
     setNewCategoryName(category.name);
   };
 
+  const invalidStringCategory = () => toast.warn("You have to give a name to the category", {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+
   const handleUpdateCategory = async (categoryId: number) => {   //Davide edit
     if (newCategoryName.trim()) {
       const updatedCategory = await editCategory(categoryId, newCategoryName);
@@ -80,7 +93,7 @@ const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
         setNewCategoryName("");
       }
     } else {
-      alert("You have to write something!");
+      invalidStringCategory();
     }
   };
 
@@ -125,11 +138,13 @@ const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
               </button>
             </>
           )}
+          <ToastContainer />
         </div>
       ))}
       <AddCategory handleAddCategory={handleAddCategory} />
 
     </div>
+
   );
 };
 

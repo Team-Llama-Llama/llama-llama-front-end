@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
   handleAddCategory: (categoryName: string) => () => Promise<void>;
@@ -11,13 +13,24 @@ const AddCategory = ({ handleAddCategory, editing }: Props) => {
 
   const handleClick = async () => {
     if (!categoryName.trim()) {
-      setError("The category Names cannot be empty!");
+      invalidStringCategory();
     } else {
       setError("");
       await handleAddCategory(categoryName)();
       setCategoryName(""); 
     }
   };
+
+  const invalidStringCategory = () => toast.warn("You have to give a name to the category", {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
 
   return (
     <form className="p-1">
@@ -36,6 +49,7 @@ const AddCategory = ({ handleAddCategory, editing }: Props) => {
         Add 
       </button>
       {error && <p className="text-red-500 mt-1">{error}</p>}
+      <ToastContainer />
     </form>
   );
 };
