@@ -3,7 +3,7 @@ import Body from "./components/Body";
 // import PrettyDecent from "./components/PrettyDecent";
 import { ModuleInterface } from "../../../interfaces/dataInterface";
 import Solution from "./components/Solution";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Props {
   setEditing: (value: boolean) => void
@@ -20,8 +20,13 @@ export type EditedProperties = "referenceUrl" | "solution" | "body";
 export type Views = "editView" | "normalView";
 
 const Module = ({ setEditing, data, index, handleDeleteModule, handleEditModule }: Props) => {
+
   const [currentView, setCurrentView] = useState<Views>("normalView");
   const [localData, setLocalData] = useState<ModuleInterface>({ ...data });
+
+  useEffect(() => {
+    setLocalData(data);
+  }, [data]);
 
   // Handler
   const handleChangeView = () => {
@@ -35,7 +40,8 @@ const Module = ({ setEditing, data, index, handleDeleteModule, handleEditModule 
   };
 
   const handlePropertyChange = (property: EditedProperties, value: string) => {
-    const temp = { ...localData };
+    const temp = {...localData};
+    console.log(temp);
     temp[property] = value;
     setLocalData(temp);
     handleEditModule(temp);
