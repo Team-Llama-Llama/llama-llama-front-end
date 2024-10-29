@@ -101,9 +101,7 @@ const ModuleList = ({ activeCategoryId, setEditing, activeCategoryName }: Props)
         )
       }
       
-      {/* List of modules.
-          Currently, the list adds a new module to the bottom.
-          However, on refresh, the modules are displayed reverse order, last added first displayed. */}
+      {/* List of modules. */}
       {modules ? (
 
           <div className="border-2 top-[20%] w-1/2 absolute m-4 bg-sky-50">    
