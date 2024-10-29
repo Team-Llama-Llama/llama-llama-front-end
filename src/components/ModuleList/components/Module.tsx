@@ -70,8 +70,15 @@ const Module = ({ setEditing, data, index, handleDeleteModule, handleEditModule 
           moduleSolution={localData.solution}
         />
         
-        <button className="border-2 bg-red-100 hover:bg-red-200 w-1/12" onClick={handleDeleteModule(data.id, index)}>X</button>
-        <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-11/12" onClick={handleChangeView}>Edit</button>
+        {currentView === "normalView" ? (
+          <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-11/12" onClick={handleChangeView}>Edit</button>
+        ) : (
+          <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-full" onClick={handleChangeView}>Save</button>
+        )}
+
+        {currentView === "normalView" && <button className="border-2 bg-red-100 hover:bg-red-200 w-1/12" onClick={handleDeleteModule(data.id, index)}>X</button>}
+        
+        
         
         
         

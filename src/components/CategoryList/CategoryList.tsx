@@ -130,12 +130,14 @@ const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
               <button
                 className="border-2 p-1 w-2/12 bg-yellow-100 hover:bg-yellow-200 rounded"
                 onClick={() => handleEditCategory(category)}
+                disabled={editing}
               >
                 Edit
               </button>
               <button
                 className="border-2 p-1 w-2/12 bg-red-100 hover:bg-red-200 rounded"
                 onClick={() => handleDeleteCategory(category.id, index)}
+                disabled={editing}
               >
                 X
               </button>
