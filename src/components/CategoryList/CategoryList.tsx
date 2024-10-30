@@ -102,28 +102,29 @@ const CategoryList = ({ userId, setActiveCategoryId, setActiveCategoryName, edit
   };
 
   return (
-    <div className="shadow-md w-72 p-3 rounded bg-sky-50">
+    <div className="w-72 p-3">
+      <AddCategory handleAddCategory={handleAddCategory} editing={editing} />
       {categories.map((category, index) => (
         <div className="p-1" key={category.id}>
           {editingCategoryId === category.id ? (
             <>
               <input
-                className="border-2 p-1 w-3/4"
+                className="bg-slate-800 text-white border-b-2 border-white focus:outline-none p-1 w-3/4"
                 type="text"
                 value={newCategoryName}
                 onChange={(e) => setNewCategoryName(e.target.value)}
               />
               <button
-                className="border-2 p-1 w-1/4 bg-blue-400 hover:bg-blue-500 text-white"
+                className="bg-slate-800 p-1 w-1/4 text-white text-2xl"
                 onClick={() => handleUpdateCategory(category.id)}
               >
-                Save
+                ✓
               </button>
             </>
           ) : (
             <>
               <button
-                className="border-2 rounded p-1 w-8/12 bg-blue-400 hover:bg-blue-500 text-white font-bold"
+                className="border-none text-left text-white font-bold p-1 w-8/12"
                 onClick={() => {
                   setActiveCategoryId(category.id);
                   setActiveCategoryName(category.name);
@@ -132,25 +133,25 @@ const CategoryList = ({ userId, setActiveCategoryId, setActiveCategoryName, edit
                 {category.name}
               </button>
               <button
-                className="border-2 p-1 w-2/12 bg-yellow-100 hover:bg-yellow-200 rounded"
+                className="border-none p-1 w-2/12 text-white text-2xl"
                 onClick={() => handleEditCategory(category)}
                 disabled={editing}
               >
-                Edit
+                ✎
               </button>
               <button
-                className="border-2 p-1 w-2/12 bg-red-100 hover:bg-red-200 rounded"
+                className="border-none p-1 w-2/12 text-white text-2xl"
                 onClick={() => handleDeleteCategory(category.id, index)}
                 disabled={editing}
               >
-                X
+                ✘
               </button>
             </>
           )}
           <ToastContainer />
         </div>
       ))}
-      <AddCategory handleAddCategory={handleAddCategory} editing={editing} />
+      
     </div>
 
   );

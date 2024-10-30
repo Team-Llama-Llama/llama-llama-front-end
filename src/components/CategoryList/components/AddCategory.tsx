@@ -37,20 +37,20 @@ const AddCategory = ({ handleAddCategory, editing }: Props) => {
   return (
     <form className="p-1">
       <input
-        className="border-2 p-1 w-3/4"
+        className="bg-slate-800 text-white text-xl border-b-2 border-white focus:outline-none p-1 w-3/4"
         type="text"
-        placeholder="New Category Name"
+        placeholder="Add new category"
         value={categoryName}
         onChange={(e) => setCategoryName(e.target.value)}
       />
       <button 
-        className={`border-2 p-1 ${ editing 
-                                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                                    : 'w-1/4 bg-blue-400 hover:bg-blue-500 text-white'}`} 
+        className={`border-none p-1 text-3xl mb-10 ${ editing 
+                                    ? 'w-1/4 bg-gray-300 text-gray-500 cursor-not-allowed' 
+                                    : 'w-1/4 text-white'}`} 
         type="button" onClick={handleClick} 
         disabled={editing}
       >
-        Add 
+        +
       </button>
 
       {error && <p className="text-red-500 mt-1">{error}</p>}

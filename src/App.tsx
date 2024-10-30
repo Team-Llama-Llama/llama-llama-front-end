@@ -21,12 +21,15 @@ async function handleLogout() {
 }
 
   return (
-    <div className="bg-cover bg-center h-screen">
+    <div className="bg-cover bg-cyan-600 bg-center h-screen">
 
       {/* NAV BAR */}
-      <div className="bg-slate-100 fixed w-full top-0 left-0 flex items-center justify-between px-6 py-4 shadow-md z-10">
-        {/* LEFT ICONS */}
-        <div className="flex items-center">
+      <div className="bg-slate-100 fixed w-full top-0 left-0 flex justify-between px-6 py-4 shadow-md z-10">
+        {/* MUSIC PLAYER */}
+        <div className="left-0 items-center pl-6 pt-2">Music Player</div>
+
+        {/* CENTER LOGO */}
+        <div className="flex">
           <img
               className="w-10 h-10 mr-4"
               src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png">
@@ -52,11 +55,11 @@ async function handleLogout() {
         </div>
       </div>
 
-      <div className="pt-16 h-full flex">
+      <div className="pt-16 h-full w-full flex">
 
         {/* Side bar in the left */}
         
-          <div className="w-auto bg-slate-700 h-full flex-shrink-0 px-4 py-6 shadow-md overflow-y-auto">
+          <div className="w-72 bg-slate-800 h-full flex-shrink-0 px-4 py-6 border-r-2 overflow-y-auto">
             <CategoryList
               userId={userId}
               setActiveCategoryId={setActiveCategoryId}
@@ -66,9 +69,13 @@ async function handleLogout() {
           </div>
 
         {/* List of modules centered */}
-        <div className="w-full p-6">
-          <ModuleList activeCategoryId={activeCategoryId} setEditing={setEditing} activeCategoryName={activeCategoryName} />
-        </div>
+          <div className="w-9/12 p-6">
+            <ModuleList activeCategoryId={activeCategoryId} setEditing={setEditing} activeCategoryName={activeCategoryName} />
+          </div>
+
+          <div className="w-1/12 p-6">
+            MUSIC PLAYER HERE
+          </div>
       </div>
 
     </div>
