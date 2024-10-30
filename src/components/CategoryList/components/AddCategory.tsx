@@ -37,7 +37,7 @@ const AddCategory = ({ handleAddCategory, editing }: Props) => {
   return (
     <form className="p-1">
       <input
-        className="bg-slate-800 text-white text-xl border-b-2 border-white focus:outline-none p-1 w-3/4"
+        className="bg-slate-800 text-white text-2xl border-b-2 border-white focus:outline-none p-1 w-3/4 font-extralight"
         type="text"
         placeholder="Add new category"
         value={categoryName}

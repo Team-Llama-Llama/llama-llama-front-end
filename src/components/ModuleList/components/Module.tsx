@@ -51,7 +51,7 @@ const Module = ({ setEditing, data, index, handleDeleteModule, handleEditModule 
   return (
     <>
       
-      <div className="border-4 border-solid border-blue-100 p-1 m-5 bg-white">
+      <div className="rounded-lg justify-around p-1 m-1 mt-5 bg-white">
         <h2 className="text-2xl m-1 text-center font-semibold">{data.title}</h2>
         <ReferenceURL
           currentView={currentView}

@@ -22,7 +22,8 @@ async function handleLogout() {
 }
 
   return (
-    <div className="bg-cover bg-cyan-600 bg-center h-screen">
+
+    <div className="bg-cover bg-slate-800 bg-center h-screen">
       <Player/>
       {/* NAV BAR */}
       <div className="bg-slate-100 fixed w-full top-0 left-0 flex justify-between px-6 py-4 shadow-md z-10">
@@ -59,7 +60,7 @@ async function handleLogout() {
 
         {/* Side bar in the left */}
         
-          <div className="w-72 bg-slate-800 h-full flex-shrink-0 px-4 py-6 border-r-2 overflow-y-auto">
+          <div className="w-80 bg-slate-800 h-full flex-shrink-0 px-4 py-6 border-r-2 overflow-y-auto">
             <CategoryList
               userId={userId}
               setActiveCategoryId={setActiveCategoryId}
@@ -69,12 +70,8 @@ async function handleLogout() {
           </div>
 
         {/* List of modules centered */}
-          <div className="w-9/12 p-6">
+          <div className="w-full pt-6 overflow-y-auto">
             <ModuleList activeCategoryId={activeCategoryId} setEditing={setEditing} activeCategoryName={activeCategoryName} />
-          </div>
-
-          <div className="w-1/12 p-6">
-            MUSIC PLAYER HERE
           </div>
       </div>
 

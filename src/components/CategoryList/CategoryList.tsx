@@ -124,7 +124,7 @@ const CategoryList = ({ userId, setActiveCategoryId, setActiveCategoryName, edit
           ) : (
             <>
               <button
-                className="border-none text-left text-white font-bold p-1 w-8/12"
+                className="border-none text-left text-white text-2xl font-extralight p-1 w-8/12"
                 onClick={() => {
                   setActiveCategoryId(category.id);
                   setActiveCategoryName(category.name);
