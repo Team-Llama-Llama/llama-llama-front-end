@@ -49,10 +49,10 @@ const Module = ({ setEditing, data, index, handleDeleteModule, handleEditModule 
 
 
   return (
-    <>
+    
       
-      <div className="rounded-lg justify-around p-1 m-1 mt-5 bg-white">
-        <h2 className="text-2xl m-1 text-center font-semibold">{data.title}</h2>
+      <div className="rounded-lg w-full p-1 m-1 mt-5 bg-slate-700">
+        <h2 className="text-2xl font-extralight m-1 text-center text-white flex flex-col justify-center items-center">{data.title}</h2>
         <ReferenceURL
           currentView={currentView}
           handlePropertyChange={handlePropertyChange}
@@ -71,15 +71,15 @@ const Module = ({ setEditing, data, index, handleDeleteModule, handleEditModule 
         />
         
         {currentView === "normalView" ? (
-          <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-11/12" onClick={handleChangeView}>Edit</button>
+          <button className="rounded-lg p-1 w-11/12 bg-slate-500 hover:bg-slate-400 text-2xl text-white font-extralight" onClick={handleChangeView}>Edit</button>
         ) : (
-          <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-full" onClick={handleChangeView}>Save</button>
+          <button className="rounded-lg p-1 w-full bg-slate-500 hover:bg-slate-400 text-2xl text-white font-extralight" onClick={handleChangeView}>Save</button>
         )}
 
-        {currentView === "normalView" && <button className="border-2 bg-red-100 hover:bg-red-200 w-1/12" onClick={handleDeleteModule(data.id, index)}>X</button>}
+        {currentView === "normalView" && <button className="rounded-lg p-1 w-1/12 bg-slate-500 hover:bg-slate-400 text-2xl text-white font-extralight" onClick={handleDeleteModule(data.id, index)}>X</button>}
         
       </div>
-    </>
+    
   );
 };
 

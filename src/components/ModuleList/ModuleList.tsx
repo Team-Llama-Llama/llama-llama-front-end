@@ -104,10 +104,10 @@ const ModuleList = ({ activeCategoryId, setEditing, activeCategoryName }: Props)
       {/* List of modules. */}
       {modules ? (
 
-          <div className="top-[20%] flex">    
+          <div className="top-[20%] flex flex-wrap justify-center items-center">    
             {modules.map((item, index) => {
               return (
-                <div  key={index} className="flex">
+                <div  key={index} className="w-full xl:basis-1/2 p-3">
                   <Module
                     setEditing={setEditing}
                     data={item}
