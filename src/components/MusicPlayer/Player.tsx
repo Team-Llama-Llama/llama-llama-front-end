@@ -3,7 +3,7 @@ import { playList } from "./playList.ts";
 
 export default function Player () {
 
-    const interfacePlacement: InterfaceGridTemplateArea = {
+    const interfacePlacement:InterfaceGridTemplateArea = {
         trackInfo: "row1-9",
         progress: "row1-5",
         playButton: "row1-6",
