@@ -21,41 +21,61 @@ async function handleLogout() {
 }
 
   return (
-    <div className="bg-cover bg-center h-screen">
-      <img
-          className="size-10 absolute right-1/3 top-5"
-          src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png">
-      </img>
-      <img
-          className="size-10 absolute left-1/3 top-5"
-          src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png">
-      </img>
-      <div className="text-center text-4xl m-5 font-medium">
-        <h1>Llama Llama</h1>
-      </div>
+    <div className="bg-cover bg-cyan-600 bg-center h-screen">
 
+      {/* NAV BAR */}
+      <div className="bg-slate-100 fixed w-full top-0 left-0 flex justify-between px-6 py-4 shadow-md z-10">
+        {/* MUSIC PLAYER */}
+        <div className="left-0 items-center pl-6 pt-2">Music Player</div>
+
+        {/* CENTER LOGO */}
+        <div className="flex">
+          <img
+              className="w-10 h-10 mr-4"
+              src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png">
+          </img>
+          <div className="text-4xl font-medium">
+            <h1>Llama Llama</h1>
+          </div>
+          <img
+              className="w-10 h-10 ml-4"
+              src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png">
+          </img>
+        </div>
         
-      <div className="flex items-center absolute top-5 right-10">
-        <span className="p-2 pr-4 italic">Welcome, {userName}</span>
-        <button 
-          className="p-2 border-2 bg-slate-100 hover:bg-slate-300"
-          type="button"
-          onClick={()=>handleLogout()}
-          >Logout</button>
+
+        {/* RIGHT ICONS */}
+        <div className="flex items-center space-x-4">
+          <span className="italic">Welcome, {userName}</span>
+          <button 
+            className="p-2 border-2 bg-slate-100 hover:bg-slate-300"
+            type="button"
+            onClick={()=>handleLogout()}
+            >Logout</button>
+        </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center">
-        <ModuleList activeCategoryId={activeCategoryId} setEditing={setEditing} activeCategoryName={activeCategoryName} />
-      </div>
+      <div className="pt-16 h-full w-full flex">
 
-      {/* Side bar in the left */}
-      <div className="flex items-center justify-start absolute top-20">
-        <CategoryList
-          userId={userId}
-          setActiveCategoryId={setActiveCategoryId}
-          setActiveCategoryName={setActiveCategoryName}
-          editing={editing}
-        />
+        {/* Side bar in the left */}
+        
+          <div className="w-72 bg-slate-800 h-full flex-shrink-0 px-4 py-6 border-r-2 overflow-y-auto">
+            <CategoryList
+              userId={userId}
+              setActiveCategoryId={setActiveCategoryId}
+              setActiveCategoryName={setActiveCategoryName}
+              editing={editing}
+            />
+          </div>
+
+        {/* List of modules centered */}
+          <div className="w-9/12 p-6">
+            <ModuleList activeCategoryId={activeCategoryId} setEditing={setEditing} activeCategoryName={activeCategoryName} />
+          </div>
+
+          <div className="w-1/12 p-6">
+            MUSIC PLAYER HERE
+          </div>
       </div>
 
     </div>
