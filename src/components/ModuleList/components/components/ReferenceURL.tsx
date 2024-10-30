@@ -13,18 +13,15 @@ const ReferenceURL = ({
 }: Props) => {
 
   return (
-    <div className="border-2">
+    <div className="rounded:lg m-5">
       {currentView === "normalView" ? (
         // <p>{referenceURL}</p>
-        <div>
-            <div>
-                <iframe width="560"
-                        height="200"
+            <div className="w-full flex justify-center items-center rounded">
+                <iframe className="rounded-lg w-full"
                         src={referenceURL}
                         >
                 </iframe>
             </div>
-        </div>
       ) : (
         <input
           className="w-full"
