@@ -62,97 +62,120 @@ function SecurityLayer() {
 
   return (
     <>
-
-      {isAuth === true && activeUser 
-      ? <App userId={activeUser} userName={userName}></App> 
-      
-      :
-
-      <div className="flex items-baseline justify-center">
-        <form>
-          
-        <img
-          className="size-10 absolute right-1/3 top-5"
-          src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png">
-        </img>
-        <img
-          className="size-10 absolute left-1/3 top-5"
-          src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png">
-        </img>
-        <div className="text-center text-4xl m-5 font-medium">
-          <h1>Llama Llama Login</h1>
+      {isAuth && activeUser ? (
+        <App userId={activeUser} userName={userName} />
+      ) : (
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+          <form className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
+            <div className="flex justify-center mb-6">
+              <img
+                className="w-10 h-10 mx-2"
+                src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png"
+                alt="Llama icon"
+              />
+              <h1 className="text-2xl font-bold text-gray-700">Llama Login</h1>
+              <img
+                className="w-10 h-10 mx-2"
+                src="https://cdn-icons-png.flaticon.com/512/3069/3069118.png"
+                alt="Llama icon"
+              />
+            </div>
+            {registration ? (
+              <>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-600">New Username</label>
+                  <input
+                    className="border border-gray-300 rounded-lg p-2 w-full"
+                    type="text"
+                    onChange={e => setRegUserName(e.target.value)}
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-600">New Password</label>
+                  <input
+                    className="border border-gray-300 rounded-lg p-2 w-full"
+                    type="password"
+                    onChange={e => setRegPassword(e.target.value)}
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-600">Confirm New Password</label>
+                  <input
+                    className="border border-gray-300 rounded-lg p-2 w-full"
+                    type="password"
+                    onChange={e => setRegConfirmPassword(e.target.value)}
+                  />
+                </div>
+                <button
+                  className="w-full bg-blue-500 text-white rounded-lg py-2 mt-4 hover:bg-blue-600 transition duration-200"
+                  type="button"
+                  onClick={userRegister}
+                >
+                  Register
+                </button>
+                <button
+                  className="w-full bg-gray-300 text-gray-700 rounded-lg py-2 mt-2 hover:bg-gray-400 transition duration-200"
+                  type="button"
+                  onClick={changeToRegister}
+                >
+                  Return to login
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-600">Username</label>
+                  <input
+                    className="border border-gray-300 rounded-lg p-2 w-full"
+                    type="text"
+                    onChange={e => setUserName(e.target.value)}
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-600">Password</label>
+                  <input
+                    className="border border-gray-300 rounded-lg p-2 w-full"
+                    type="password"
+                    onChange={e => setPassword(e.target.value)}
+                  />
+                </div>
+                <button
+                  className="w-full bg-blue-500 text-white rounded-lg py-2 mt-4 hover:bg-blue-600 transition duration-200"
+                  type="button"
+                  onClick={userLogin}
+                >
+                  Login
+                </button>
+                <button
+                  className="w-full bg-gray-300 text-gray-700 rounded-lg py-2 mt-2 hover:bg-gray-400 transition duration-200"
+                  type="button"
+                  onClick={changeToRegister}
+                >
+                  Register new user
+                </button>
+              </>
+            )}
+          </form>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            pauseOnHover
+            draggable
+            pauseOnFocusLoss
+            theme="light"
+          />
         </div>
-          
-          {registration === true
-          ? <>
-            <div>
-              <p>New Username</p>
-              <input className="border-2" type="text" onChange={e => setRegUserName(e.target.value)} />
-
-              <p>New Password</p>
-              <input className="border-2" type="password" onChange={e => setRegPassword(e.target.value)} />
-
-              <p>Confirm New Password</p>
-              <input className="border-2" type="password" onChange={e => setRegConfirmPassword(e.target.value)} />
-            </div>
-            <div>
-              <button 
-                className="border-2 mt-2 p-1 bg-gray-50 hover:bg-gray-200" 
-                type="button"
-                onClick={userRegister}
-                >Register</button>
-            </div>
-            <div>
-              <button 
-                className="border-2 mt-2 p-1 bg-gray-50 hover:bg-gray-200" 
-                type="button"
-                onClick={changeToRegister}
-                >Return to login</button>
-            </div>
-          </>
-          
-          :
-          
-          <>
-            <div>
-              <p>Username</p>
-              <input className="border-2" type="text" onChange={e => setUserName(e.target.value)} />
-
-              <p>Password</p>
-              <input className="border-2" type="password" onChange={e => setPassword(e.target.value)} />
-            </div>
-            <div>
-              <button 
-              className="border-2 mt-2 p-1 bg-gray-50 hover:bg-gray-200" 
-              type="button"
-              onClick={userLogin}
-              >Login</button>
-            </div>
-            <div>
-              <button 
-                className="border-2 mt-2 p-1 bg-gray-50 hover:bg-gray-200" 
-                type="button"
-                onClick={changeToRegister}
-                >Register new user</button>
-            </div>
-          </>
-        }
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          pauseOnHover
-          draggable
-          pauseOnFocusLoss
-          theme="light"/>
-        </form>
-      </div>
-      }
-
+      )}
     </>
   );
 }
 
 export default SecurityLayer;
+
+
+//shadow-md used for creating that little shawod in the border
+//transition duration-200 ??
+//w-full max-w-sm adapt to max weight about conteiner
