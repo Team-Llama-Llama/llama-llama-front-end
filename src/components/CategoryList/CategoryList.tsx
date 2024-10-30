@@ -102,7 +102,7 @@ const CategoryList = ({ userId, setActiveCategoryId, setActiveCategoryName, edit
   };
 
   return (
-    <div className="border-2 w-72 p-3 rounded bg-sky-50">
+    <div className="shadow-md w-72 p-3 rounded bg-sky-50">
       {categories.map((category, index) => (
         <div className="p-1" key={category.id}>
           {editingCategoryId === category.id ? (
