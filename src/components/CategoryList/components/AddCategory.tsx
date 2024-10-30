@@ -22,7 +22,7 @@ const AddCategory = ({ handleAddCategory, editing }: Props) => {
     }
   };
 
-
+  
   const invalidStringCategory = () => toast.warn("You have to give a name to the category", {
     position: "top-center",
     autoClose: 5000,
