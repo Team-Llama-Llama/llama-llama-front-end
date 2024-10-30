@@ -13,10 +13,10 @@ const Body = ({ moduleBody, currentView, handlePropertyChange }: Props) => {
   };
   // Controlled components
   return (
-    <div className="m-1 bg-slate-500 p-3 mb-3 text-white text-xl font-extralight h-40 overflow-y-auto">
+    <div className="m-1 bg-slate-500 p-3 mb-3 text-white text-2xl font-extralight h-40 overflow-y-auto rounded-lg">
       {currentView === "editView" ? (
         <>
-          <textarea className="w-full" value={moduleBody} onChange={(e) => {
+          <textarea className="w-full h-full rounded-lg bg-white p-1 text-black" value={moduleBody} onChange={(e) => {
             e.preventDefault();
             handleTextChange(e);
           }} />

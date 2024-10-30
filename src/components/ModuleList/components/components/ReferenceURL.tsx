@@ -13,18 +13,18 @@ const ReferenceURL = ({
 }: Props) => {
 
   return (
-    <div className="rounded:lg m-5">
+    <div className="rounded:lg m-5 h-60">
       {currentView === "normalView" ? (
         // <p>{referenceURL}</p>
-            <div className="w-full flex justify-center items-center rounded">
-                <iframe className="rounded-lg w-full"
+            <div className="w-full flex justify-center items-center rounded h-60">
+                <iframe className="rounded-lg w-full h-full"
                         src={referenceURL}
                         >
                 </iframe>
             </div>
       ) : (
         <input
-          className="w-full"
+          className="w-full h-full rounded-lg p-2 text-3xl bg-slate-500 text-white text-center"
           type="text"
           value={referenceURL}
           onChange={(e) => {

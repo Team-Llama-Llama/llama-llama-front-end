@@ -71,12 +71,12 @@ const Module = ({ setEditing, data, index, handleDeleteModule, handleEditModule 
         />
         
         {currentView === "normalView" ? (
-          <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-11/12" onClick={handleChangeView}>Edit</button>
+          <button className="rounded-lg p-1 w-11/12 bg-slate-500 hover:bg-slate-400 text-2xl text-white font-extralight" onClick={handleChangeView}>Edit</button>
         ) : (
-          <button className="border-2 bg-sky-400 hover:bg-sky-500 text-white w-full" onClick={handleChangeView}>Save</button>
+          <button className="rounded-lg p-1 w-full bg-slate-500 hover:bg-slate-400 text-2xl text-white font-extralight" onClick={handleChangeView}>Save</button>
         )}
 
-        {currentView === "normalView" && <button className="border-2 bg-red-100 hover:bg-red-200 w-1/12" onClick={handleDeleteModule(data.id, index)}>X</button>}
+        {currentView === "normalView" && <button className="rounded-lg p-1 w-1/12 bg-slate-500 hover:bg-slate-400 text-2xl text-white font-extralight" onClick={handleDeleteModule(data.id, index)}>X</button>}
         
       </div>
     
