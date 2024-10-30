@@ -2,6 +2,7 @@ import { useState } from "react";
 import CategoryList from "./components/CategoryList/CategoryList";
 import ModuleList from "./components/ModuleList/ModuleList";
 import { logout } from "./utilities/auth";
+import Player from "./components/MusicPlayer/Player.tsx"
 import "./app.css"
 
 interface Props {
@@ -22,11 +23,10 @@ async function handleLogout() {
 
   return (
     <div className="bg-cover bg-cyan-600 bg-center h-screen">
-
+      <Player/>
       {/* NAV BAR */}
       <div className="bg-slate-100 fixed w-full top-0 left-0 flex justify-between px-6 py-4 shadow-md z-10">
         {/* MUSIC PLAYER */}
-        <div className="left-0 items-center pl-6 pt-2">Music Player</div>
 
         {/* CENTER LOGO */}
         <div className="flex">

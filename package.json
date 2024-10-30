@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-modern-audio-player": "^1.4.0-rc.2",
     "react-quill": "^2.0.0",
     "react-toastify": "^10.0.6"
   },
