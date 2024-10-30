@@ -36,11 +36,11 @@ const CategoryList = ({ userId, setActiveCategoryId, setActiveCategoryName, edit
   }, [categories]);
 
   // Handlers
-  function handleCategoryClicked(id: number) {
-    return () => {
-      setActiveCategoryId(id);
-    };
-  }
+  // function handleCategoryClicked(id: number) {
+  //   return () => {
+  //     setActiveCategoryId(id);
+  //   };
+  // }
 
   // HTTP handling
   const handleFetchCategories = async () => {
