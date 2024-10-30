@@ -43,7 +43,13 @@ const AddCategory = ({ handleAddCategory, editing }: Props) => {
         value={categoryName}
         onChange={(e) => setCategoryName(e.target.value)}
       />
-      <button className={`border-2 p-1 ${ editing ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'w-1/4 bg-blue-400 hover:bg-blue-500 text-white'}`} type="button" onClick={handleClick}>
+      <button 
+        className={`border-2 p-1 ${ editing 
+                                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                                    : 'w-1/4 bg-blue-400 hover:bg-blue-500 text-white'}`} 
+        type="button" onClick={handleClick} 
+        disabled={editing}
+      >
         Add 
       </button>
 

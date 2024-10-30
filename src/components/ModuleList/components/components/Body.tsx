@@ -7,6 +7,7 @@ interface Props {
 }
 
 const Body = ({ moduleBody, currentView, handlePropertyChange }: Props) => {
+  
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     handlePropertyChange("body", event.target.value);
   };
