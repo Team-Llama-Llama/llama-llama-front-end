@@ -68,24 +68,24 @@ const CreateModule = ({ activeCategoryId, handleAddModule }: Props) => {
   };
 
   return (
-    <div className="rounded-2xl p-5 bg-cyan-500">
-      <h1 className="text-center text-3xl">Add a Study Module</h1>
+    <div className=" pb-5 pt-5 bg-slate-800">
+      <h1 className="text-center text-3xl font-extralight text-white">Add a Study Module</h1>
       <form className="flex">
-        <input className="rounded-lg m-1 w-full p-4 text-2xl focus:outline-none"
+        <input className="rounded-lg m-1 w-full p-4 text-2xl focus:outline-none font-extralight"
           type="text"
           placeholder="Title"
           value={titleValue}
           onChange={(e) => setTitleValue(e.target.value)}
         />
         <br/>
-        <input className="rounded-lg m-1 w-full p-4 text-2xl focus:outline-none"
+        <input className="rounded-lg m-1 w-full p-4 text-2xl focus:outline-none font-extralight"
           type="text"
           placeholder="Enter a URL"
           value={referenceUrlValue}
           onChange={(e) => setReferenceUrlValue(e.target.value)}
         />
         <br/>
-        <button className="rounded-lg p-4 m-1 w-full bg-slate-800 hover:bg-slate-500 text-2xl text-white"
+        <button className="rounded-lg p-4 m-1 w-full bg-slate-500 hover:bg-slate-400 text-2xl text-white font-extralight"
           type="button"
           onClick={validateInputs}
         >

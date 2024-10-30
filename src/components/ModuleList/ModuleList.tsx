@@ -95,19 +95,19 @@ const ModuleList = ({ activeCategoryId, setEditing, activeCategoryName }: Props)
       */}
       {
         activeCategoryName ? (
-          <div className="flex items-center justify-center w-full font-bold text-3xl bg-cyan-300 min-h-12 rounded-2xl mt-3">{activeCategoryName}</div>
+          <div className="flex items-center justify-center w-full font-light text-3xl bg-slate-700 min-h-12 mt-3 text-white">{activeCategoryName}</div>
         ): (
-          <div className="flex items-center justify-center w-full font-bold text-3xl  bg-cyan-500 min-h-12 rounded-2xl">Select a category on the left</div>
+          <div className="flex items-center justify-center w-full font-light text-3xl bg-slate-700 min-h-12 text-white">Select a category on the left</div>
         )
       }
       
       {/* List of modules. */}
       {modules ? (
 
-          <div className="top-[20%] w-full">    
+          <div className="top-[20%] flex">    
             {modules.map((item, index) => {
               return (
-                <div  key={index}>
+                <div  key={index} className="flex">
                   <Module
                     setEditing={setEditing}
                     data={item}

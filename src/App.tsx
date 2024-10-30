@@ -25,10 +25,9 @@ async function handleLogout() {
 
       {/* NAV BAR */}
       <div className="bg-slate-100 fixed w-full top-0 left-0 flex justify-between px-6 py-4 shadow-md z-10">
-        {/* MUSIC PLAYER */}
-        <div className="left-0 items-center pl-6 pt-2">Music Player</div>
+        
 
-        {/* CENTER LOGO */}
+        {/* LEFT LOGO */}
         <div className="flex">
           <img
               className="w-10 h-10 mr-4"
@@ -69,12 +68,8 @@ async function handleLogout() {
           </div>
 
         {/* List of modules centered */}
-          <div className="w-9/12 p-6 overflow-y-auto">
+          <div className="w-full pt-6 overflow-y-auto">
             <ModuleList activeCategoryId={activeCategoryId} setEditing={setEditing} activeCategoryName={activeCategoryName} />
-          </div>
-
-          <div className="w-1/12 p-6 overflow-y-auto">
-            MUSIC PLAYER HERE
           </div>
       </div>
 
