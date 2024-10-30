@@ -35,11 +35,11 @@ const CategoryList = ({ userId, setActiveCategoryId, editing }: Props) => {
   }, [categories]);
 
   // Handlers
-  function handleCategoryClicked(id: number) {
-    return () => {
-      setActiveCategoryId(id);
-    };
-  }
+  // function handleCategoryClicked(id: number) {
+  //   return () => {
+  //     setActiveCategoryId(id);
+  //   };
+  // }
 
   // HTTP handling
   const handleFetchCategories = async () => {

@@ -33,12 +33,12 @@ export const addCategory = async (
 
 export const editCategory = async (
   categoryId: number,
-  categoryEdited: string
+  name: string
 ) => {
   const response = await fetch(`${API_URL}/categories/${categoryId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ categoryEdited }),
+    body: JSON.stringify({ name }),
     credentials: "include"
   });
   return response.json();
