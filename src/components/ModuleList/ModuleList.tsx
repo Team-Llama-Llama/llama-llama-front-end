@@ -81,7 +81,7 @@ const ModuleList = ({ activeCategoryId, setEditing, activeCategoryName }: Props)
       {/* Add Module Component */}
       {activeCategoryId !== null 
         ?
-        <div className="w-1/2">
+        <div className="w-3/4">
         <CreateModule
           handleAddModule={handleAddModule}
           activeCategoryId={activeCategoryId}
@@ -95,16 +95,16 @@ const ModuleList = ({ activeCategoryId, setEditing, activeCategoryName }: Props)
       */}
       {
         activeCategoryName ? (
-          <div className="border-2 w-1/2 m-4 text-center font-bold text-xl bg-sky-50">{activeCategoryName}</div>
+          <div className="border-2 w-full text-center font-bold text-xl bg-sky-50">{activeCategoryName}</div>
         ): (
-          <div className="border-2 w-1/2 m-4 text-center font-bold text-xl bg-sky-50">Select a category on the left</div>
+          <div className="border-2 w-full text-center font-bold text-xl bg-sky-50">Select a category on the left</div>
         )
       }
       
       {/* List of modules. */}
       {modules ? (
 
-          <div className="border-2 top-[20%] w-1/2 absolute m-4 bg-sky-50">    
+          <div className="border-2 top-[20%] w-full bg-sky-50">    
             {modules.map((item, index) => {
               return (
                 <div  key={index}>
