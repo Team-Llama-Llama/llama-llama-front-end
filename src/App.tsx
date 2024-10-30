@@ -2,6 +2,7 @@ import { useState } from "react";
 import CategoryList from "./components/CategoryList/CategoryList";
 import ModuleList from "./components/ModuleList/ModuleList";
 import { logout } from "./utilities/auth";
+import Player from "./components/MusicPlayer/Player.tsx"
 import "./app.css"
 
 interface Props {
@@ -34,7 +35,8 @@ async function handleLogout() {
         <h1>Llama Llama</h1>
       </div>
 
-        
+      <div className="p-2 pl-10 absolute top-3 left-20">{Player()}</div>
+
       <div className="flex items-center absolute top-5 right-10">
         <span className="p-2 pr-4 italic">Welcome, {userName}</span>
         <button 
@@ -49,7 +51,7 @@ async function handleLogout() {
       </div>
 
       {/* Side bar in the left */}
-      <div className="flex items-center justify-start absolute top-20">
+      <div className="flex items-center justify-start">
         <CategoryList
           userId={userId}
           setActiveCategoryId={setActiveCategoryId}
