@@ -1,10 +1,27 @@
-import AudioPlayer from 'react-modern-audio-player';
+import AudioPlayer, { InterfacePlacement, InterfaceGridTemplateArea } from 'react-modern-audio-player';
 import { playList } from "./playList.ts";
+
+const interfaceGridTemplateArea: InterfaceGridTemplateArea<6> = {
+    repeatType: "row1-1",
+    playButton: "row1-2",
+    progress: "row1-3",
+    volume: "row1-4",
+    trackInfo: "row1-5",
+}
+
+const interfacePlacement: InterfacePlacement = {
+    templateArea: interfaceGridTemplateArea
+}
 
 export default function Player () {
 
 	return (
 		<AudioPlayer
+            audioInitialState={{
+                repeatType: "SHUFFLE",
+                volume: 0.2,
+                curPlayId: 1,
+            }}
             playList={playList}
             activeUI={{
                 playButton: true,
@@ -12,12 +29,12 @@ export default function Player () {
                 volume: true,
                 volumeSlider: true,
                 repeatType: true,
-                trackTime: true,
                 trackInfo: true,
                 progress: "bar",
             }}
             placement={{
-                player: "bottom"
+                player: "bottom",
+                interface: interfacePlacement,
             }}/>
         )
 }
