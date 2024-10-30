@@ -35,6 +35,9 @@ export default function Player () {
             placement={{
                 player: "bottom",
                 interface: interfacePlacement,
+            }}
+            rootContainerProps={{
+                colorScheme: "dark",
             }}/>
         )
 }
