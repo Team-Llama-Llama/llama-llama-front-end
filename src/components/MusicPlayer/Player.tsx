@@ -19,7 +19,6 @@ export default function Player () {
 		<AudioPlayer
             audioInitialState={{
                 repeatType: "SHUFFLE",
-                volume: 0.2,
                 curPlayId: 1,
             }}
             playList={playList}
